@@ -1,0 +1,2 @@
+import {Button} from '@/components/ui';
+export default function NotFound(){return <section className="not-found"><p className="eyebrow">Wrong turn?</p><h1>That page is not on this map.</h1><p>It may have moved, or it may be a destination we have not opened yet. Jaisalmer is FolkMiles’ first live destination.</p><div className="button-row"><Button href="/">Go home</Button><Button href="/destinations/jaisalmer" secondary>Explore Jaisalmer</Button></div></section>}

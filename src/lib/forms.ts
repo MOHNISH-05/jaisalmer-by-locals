@@ -1,0 +1,14 @@
+import { z } from 'zod';
+const text = (min:number, max=1000) => z.string({error:'Please complete this field.'}).trim().min(min,'Please complete this field.').max(max,'Please shorten this response.');
+const phone = z.string().trim().min(7,'Enter a valid phone number.').max(30).regex(/^[+()\- 0-9]+$/,'Enter a valid phone number.');
+const email = z.string().trim().email('Enter a valid email address.').max(254);
+const optional = (max=500)=>z.string().trim().max(max).optional().or(z.literal(''));
+const consent = z.literal('true',{error:'Please confirm you agree to the privacy policy.'});
+const trap = z.string().max(0).optional().or(z.literal(''));
+const positive=z.coerce.number({error:'Enter a valid number.'}).int('Enter a whole number.').min(1,'Enter at least 1.');
+const nonNegative=z.coerce.number({error:'Enter a valid number.'}).int('Enter a whole number.').min(0,'Enter 0 or more.');
+export const travellerSchema=z.object({fullName:text(2,100),phone,email,city:text(2,100),travelDates:text(2,100),adults:positive.max(30,'Please contact us for larger groups.'),children:nonNegative.max(20,'Please contact us for larger groups.'),duration:text(2,100),stayPreference:text(2,100),budget:text(2,100),interests:optional(),pickup:optional(100),message:optional(),consent,website:trap});
+export const b2bSchema=z.object({contactName:text(2,100),agency:text(2,160),phone,email,city:text(2,100),websiteOrSocial:optional(300),travelDates:text(2,100),travellers:positive.max(1000,'Please contact us for larger groups.'),services:text(2,500),budget:text(2,100),requirements:optional(),consent,website:trap});
+export const partnerSchema=z.object({contactName:text(2,100),business:text(2,160),category:text(2,100),phone,email,serviceArea:text(2,200),websiteOrSocial:optional(300),message:optional(),consent,website:trap});
+export type FormKind='traveller'|'b2b'|'partner';
+export const schemas={traveller:travellerSchema,b2b:b2bSchema,partner:partnerSchema};
