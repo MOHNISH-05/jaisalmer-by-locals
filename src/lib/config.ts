@@ -1,8 +1,13 @@
+import { folkMilesContact } from './contact';
+export { folkMilesContact };
+
 export const brand = {
-  name: 'FolkMiles', tagline: 'Explore by Locals',
+  name: 'FolkMiles',
+  tagline: 'Explore India by Locals',
   domain: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || '',
   email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || '',
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, '') || '',
+  phone: folkMilesContact.phone,
+  whatsapp: folkMilesContact.whatsapp,
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || '',
   address: process.env.NEXT_PUBLIC_BUSINESS_ADDRESS || '',
   ga: process.env.NEXT_PUBLIC_GA_ID || '',

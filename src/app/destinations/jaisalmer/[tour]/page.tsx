@@ -1,8 +1,82 @@
 import {notFound} from 'next/navigation';
-import {Button,Breadcrumbs,CTA,Eyebrow,QuoteNote} from '@/components/ui';
+import {Button,Breadcrumbs,CTA,Eyebrow,Photo,QuoteNote} from '@/components/ui';
 import {tours} from '@/lib/content';
 import {metadata,BreadcrumbSchema,JsonLd} from '@/lib/seo';
 import {brand} from '@/lib/config';
+import {imageAssets} from '@/lib/images';
+
 export function generateStaticParams(){return tours.map(t=>({tour:t.slug}))}
-export async function generateMetadata({params}:{params:Promise<{tour:string}>}){const {tour}=await params;const t=tours.find(x=>x.slug===tour);return t?metadata(`${t.duration} Jaisalmer itinerary`,`${t.description} A flexible private Jaisalmer trip format by FolkMiles.`,`/destinations/jaisalmer/${t.slug}`):{title:'Not found'}}
-export default async function TourPage({params}:{params:Promise<{tour:string}>}){const {tour}=await params;const t=tours.find(x=>x.slug===tour);if(!t)notFound();return <><div className="wrap"><Breadcrumbs items={[{label:'Destinations',href:'/#destinations'},{label:'Jaisalmer',href:'/destinations/jaisalmer'},{label:t.duration}]}/></div><section className="page-intro wrap"><Eyebrow>Jaisalmer starting itinerary · {t.duration}</Eyebrow><h1>{t.name}</h1><p>{t.description} This is a trip format to shape around you, not a rigid package.</p><Button href="/contact" event="package_enquiry_click">Enquire about this trip</Button></section><section className="section wrap editorial-layout"><div className="prose"><section><h2>A flexible route, from the start</h2><p>Arrival time, travel season, group needs, stay preference and desert arrangements all affect the best version of this route. We’ll use the outline below as a conversation, then write the proposed services, inclusions and exclusions into your quotation.</p></section><section><Eyebrow>Your day-by-day starting point</Eyebrow>{t.days.map(([title,body],i)=><article className="day" key={title}><span className="step-number">0{i+1}</span><div><h2>Day {i+1}: {title}</h2><p>{body}</p></div></article>)}</section><section><h2>Make it yours</h2><p>Discuss a city stay or desert night, guide time, pace, food and craft interests, pickup point, accessible routing and any activity preferences. We will not substitute or add a service without setting it out in the final itinerary.</p><QuoteNote/></section></div><aside className="sidebar"><Eyebrow>Ready when you are</Eyebrow><h3>Tell us your travel dates.</h3><p>We’ll help you turn this into a route that fits your group.</p><Button href="/contact" event="package_enquiry_click">Plan this journey</Button></aside></section><CTA/><BreadcrumbSchema items={[{label:'Destinations',path:'/#destinations'},{label:'Jaisalmer',path:'/destinations/jaisalmer'},{label:t.duration,path:`/destinations/jaisalmer/${t.slug}`}]}/><JsonLd value={{'@context':'https://schema.org','@type':'TouristTrip',name:`Jaisalmer ${t.duration} starting itinerary`,description:t.description,touristType:'Private travellers',itinerary:{'@type':'ItemList',itemListElement:t.days.map(([name],i)=>({'@type':'ListItem',position:i+1,name})) ,...(brand.domain?{url:`${brand.domain}/destinations/jaisalmer/${t.slug}`}:{})}}}/></>}
+
+export async function generateMetadata({params}:{params:Promise<{tour:string}>}){
+  const {tour}=await params;
+  const t=tours.find(x=>x.slug===tour);
+  return t?metadata(`${t.duration} Jaisalmer itinerary`,`${t.description} A flexible private Jaisalmer trip format by FolkMiles.`,`/destinations/jaisalmer/${t.slug}`):{title:'Not found'};
+}
+
+export default async function TourPage({params}:{params:Promise<{tour:string}>}){
+  const {tour}=await params;
+  const t=tours.find(x=>x.slug===tour);
+  if(!t)notFound();
+  const itineraryAsset = imageAssets.itineraries[t.slug as keyof typeof imageAssets.itineraries];
+
+  return (
+    <>
+      <div className="wrap">
+        <Breadcrumbs items={[{label:'Destinations',href:'/#destinations'},{label:'Jaisalmer',href:'/destinations/jaisalmer'},{label:t.duration}]}/>
+      </div>
+      <section className="page-intro wrap">
+        <Eyebrow>Jaisalmer starting itinerary · {t.duration}</Eyebrow>
+        <h1>{t.name}</h1>
+        <p>{t.description} This is a trip format to shape around you, not a rigid package.</p>
+        <Button href="/contact" event="package_enquiry_click">Enquire about this trip</Button>
+      </section>
+
+      {itineraryAsset && (
+        <div className="wrap wide-photo" style={{ marginBottom: '40px' }}>
+          <Photo
+            src={itineraryAsset.src}
+            alt={itineraryAsset.alt}
+            desktopPosition={itineraryAsset.desktopPosition}
+            mobilePosition={itineraryAsset.mobilePosition}
+            priority
+          />
+        </div>
+      )}
+
+      <section className="section wrap editorial-layout">
+        <div className="prose">
+          <section>
+            <h2>A flexible route, from the start</h2>
+            <p>Arrival time, travel season, group needs, stay preference and desert arrangements all affect the best version of this route. We’ll use the outline below as a conversation, then write the proposed services, inclusions and exclusions into your quotation.</p>
+          </section>
+          <section>
+            <Eyebrow>Your day-by-day starting point</Eyebrow>
+            {t.days.map(([title,body],i)=>(
+              <article className="day" key={title}>
+                <span className="step-number">0{i+1}</span>
+                <div>
+                  <h2>Day {i+1}: {title}</h2>
+                  <p>{body}</p>
+                </div>
+              </article>
+            ))}
+          </section>
+          <section>
+            <h2>Make it yours</h2>
+            <p>Discuss a city stay or desert night, guide time, pace, food and craft interests, pickup point, accessible routing and any activity preferences. We will not substitute or add a service without setting it out in the final itinerary.</p>
+            <QuoteNote/>
+          </section>
+        </div>
+        <aside className="sidebar">
+          <Eyebrow>Ready when you are</Eyebrow>
+          <h3>Tell us your travel dates.</h3>
+          <p>We’ll help you turn this into a route that fits your group.</p>
+          <Button href="/contact" event="package_enquiry_click">Plan this journey</Button>
+        </aside>
+      </section>
+      <CTA/>
+      <BreadcrumbSchema items={[{label:'Destinations',path:'/#destinations'},{label:'Jaisalmer',path:'/destinations/jaisalmer'},{label:t.duration,path:`/destinations/jaisalmer/${t.slug}`}]}/>
+      <JsonLd value={{'@context':'https://schema.org','@type':'TouristTrip',name:`Jaisalmer ${t.duration} starting itinerary`,description:t.description,touristType:'Private travellers',itinerary:{'@type':'ItemList',itemListElement:t.days.map(([name],i)=>({'@type':'ListItem',position:i+1,name})) ,...(brand.domain?{url:`${brand.domain}/destinations/jaisalmer/${t.slug}`}:{})}}}/>
+    </>
+  );
+}

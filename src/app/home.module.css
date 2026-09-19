@@ -1,0 +1,1714 @@
+/* FolkMiles Master Editorial Homepage Stylesheet */
+
+/* -------------------------------------------------------------
+   01 / HERO (INDIA CANVAS)
+   ------------------------------------------------------------- */
+.hero {
+  min-height: calc(100vh - 102px);
+  position: relative;
+  overflow: hidden;
+  background: #0f1d18;
+  color: #faf7f0;
+  display: flex;
+  align-items: center;
+}
+
+.heroArt {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroCanvas {
+  position: absolute;
+  inset: 0;
+}
+
+.heroBgImage {
+  object-fit: cover;
+  object-position: var(--desktop-pos, center 38%);
+  opacity: 0.45;
+  filter: saturate(0.9) brightness(0.9);
+}
+
+@media (max-width: 768px) {
+  .heroBgImage {
+    object-position: var(--mobile-pos, 60% 25%);
+  }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 29, 24, 0.95) 0%,
+    rgba(15, 29, 24, 0.8) 55%,
+    rgba(15, 29, 24, 0.45) 100%
+  );
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  padding-block: 80px 140px;
+}
+
+.heroCopy {
+  max-width: 820px;
+}
+
+.journeyIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #dfa962;
+  margin-bottom: 26px;
+}
+
+.journeyIndicator i {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: rgba(223, 169, 98, 0.5);
+}
+
+.indicatorActive {
+  color: #ffffff;
+  border-bottom: 1px solid #dfa962;
+  padding-bottom: 2px;
+}
+
+.heroCopy h1 {
+  font-size: clamp(3.6rem, 7.5vw, 7.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+.heroCopy h1 em {
+  display: inline-block;
+  color: #e59d4f;
+  font-style: italic;
+}
+
+.heroCopy > p:not(:global(.eyebrow)) {
+  font: 1.3rem/1.65 Georgia, serif;
+  max-width: 540px;
+  margin: 30px 0 40px;
+  color: #dbe2dc;
+}
+
+.heroCopy :global(.button.secondary) {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+}
+
+.heroCopy :global(.button.secondary):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.scrollCue {
+  position: absolute;
+  z-index: 3;
+  bottom: 28px;
+  left: calc((100% - min(1240px, calc(100% - 96px))) / 2);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #dfa962;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.scrollCue:hover {
+  color: #ffffff;
+}
+
+/* -------------------------------------------------------------
+   02 / BRAND INTRO & PRINCIPLES
+   ------------------------------------------------------------- */
+.intro {
+  display: grid;
+  grid-template-columns: 0.35fr 1.15fr 1fr;
+  gap: 60px;
+  align-items: start;
+  padding-block: 120px;
+}
+
+.chapter {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: #a94b25;
+  text-transform: uppercase;
+  display: block;
+}
+
+.introCopy {
+  padding-top: 36px;
+  font: 1.25rem/1.7 Georgia, serif;
+  color: #4b5751;
+}
+
+.introCopy strong {
+  display: block;
+  margin-top: 32px;
+  color: #103f32;
+  font: italic 1.2rem Georgia, serif;
+}
+
+.principles {
+  background: #103f32;
+  color: #f9f5ea;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 55px;
+}
+
+.sectionHeading h2 {
+  max-width: 820px;
+}
+
+.headingSide {
+  max-width: 440px;
+  color: #647069;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.principles .headingSide {
+  color: #c7d4cc;
+}
+
+.principles :global(.eyebrow) {
+  color: #dfa962;
+}
+
+.principleGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.principleGrid article {
+  padding: 38px 25px 20px 0;
+}
+
+.principleGrid article + article {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 25px;
+}
+
+.principleGrid span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #dfa962;
+}
+
+.principleGrid h3 {
+  font-size: 1.5rem;
+  margin: 30px 0 14px;
+  color: #ffffff;
+}
+
+.principleGrid p {
+  color: #c7d4cc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------
+   03 / INDIA STORY (THEMES)
+   ------------------------------------------------------------- */
+.indiaStory {
+  padding-block: 120px;
+}
+
+.themeGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 240px;
+  gap: 20px;
+}
+
+.themeGrid article {
+  padding: 32px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 4px;
+}
+
+.themeBg {
+  position: absolute;
+  inset: 0;
+}
+
+.themeBgImg {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.themeGrid article:hover .themeBgImg {
+  transform: scale(1.04);
+}
+
+.themeGrid article::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(14, 27, 21, 0.92) 0%, rgba(14, 27, 21, 0.35) 60%, transparent 100%);
+}
+
+.themeContent {
+  position: relative;
+  z-index: 2;
+}
+
+.themeContent span {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: #e5b575;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.themeContent h3 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.themeContent p {
+  font-size: 0.9rem;
+  max-width: 360px;
+  margin-top: 8px;
+  color: #e4e7df;
+  line-height: 1.5;
+}
+
+.theme1 {
+  grid-column: span 7;
+}
+
+.theme2 {
+  grid-column: span 5;
+}
+
+.theme3 {
+  grid-column: span 5;
+}
+
+.theme4 {
+  grid-column: span 7;
+}
+
+.honesty {
+  margin-top: 30px;
+  font-size: 0.82rem;
+  color: #657069;
+  font-style: italic;
+}
+
+/* -------------------------------------------------------------
+   04 / RAJASTHAN TRANSITION & STORY
+   ------------------------------------------------------------- */
+.rajasthanWrapper {
+  background: #f4ecdf;
+}
+
+.rajasthanTransition {
+  min-height: 620px;
+  background: #cb9058;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: stretch;
+}
+
+.transitionImage {
+  position: relative;
+  min-height: 460px;
+}
+
+.transitionPhoto {
+  object-fit: cover;
+}
+
+.transitionGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(203, 144, 88, 0.95) 100%);
+}
+
+.transitionCopy {
+  padding: 80px 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #ead5aa, #cb9058);
+  color: #28352f;
+}
+
+.transitionCopy .chapter {
+  margin-bottom: 20px;
+}
+
+.transitionCopy h2 {
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 1;
+}
+
+.transitionCopy h2 em {
+  color: #923414;
+}
+
+.transitionCopy p {
+  font: 1.2rem/1.7 Georgia, serif;
+  max-width: 460px;
+  margin-top: 30px;
+  color: #3b4742;
+}
+
+.rajasthanStory {
+  padding-block: 100px;
+}
+
+.rajasthanGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.rajasthanCard {
+  background: #faf7f0;
+  border: 1px solid #ded6c8;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.rajasthanCard:hover {
+  transform: translateY(-4px);
+  border-color: #cb9058;
+}
+
+.rajasthanCardImage {
+  position: relative;
+  height: 240px;
+  background: #e2d7c5;
+}
+
+.rajasthanCardImage img {
+  object-fit: cover;
+}
+
+.rajasthanCardContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.rajasthanTag {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #923414;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.rajasthanCardContent h3 {
+  font-size: 1.45rem;
+  margin-bottom: 10px;
+  color: #1a2e26;
+}
+
+.rajasthanCardContent p {
+  font-size: 0.88rem;
+  color: #5c6660;
+  line-height: 1.6;
+}
+
+.rajasthanBridgeNote {
+  margin-top: 40px;
+  font: italic 0.92rem Georgia, serif;
+  color: #6a746e;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------
+   05 / JAISALMER REVEAL & INTRO
+   ------------------------------------------------------------- */
+.jaisalmerReveal {
+  height: min(85vh, 850px);
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.revealImageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.revealImage {
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.revealShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(18, 14, 9, 0.92) 0%,
+    rgba(18, 14, 9, 0.4) 50%,
+    rgba(18, 14, 9, 0.75) 100%
+  );
+}
+
+.revealCopy {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-inline: 24px;
+}
+
+.revealIntro {
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #f1ebd9;
+  margin-bottom: 12px;
+}
+
+.revealTitle {
+  text-transform: uppercase;
+  font-size: clamp(4.5rem, 12vw, 11rem);
+  letter-spacing: 0.08em;
+  line-height: 0.85;
+  color: #fcecd2;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.revealTagline {
+  display: block;
+  margin-top: 24px;
+  font: italic clamp(1.3rem, 2.2vw, 2.2rem) Georgia, serif;
+  color: #e5b575;
+}
+
+.destinationIntro {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
+  align-items: center;
+  padding-block: 120px;
+}
+
+.destinationIntro .chapter {
+  margin-bottom: 24px;
+}
+
+.destinationIntro h2 {
+  font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+  line-height: 1.05;
+}
+
+.destinationCopy > p {
+  font: 1.18rem/1.8 Georgia, serif;
+  color: #55615a;
+  margin-bottom: 34px;
+}
+
+/* -------------------------------------------------------------
+   06 / JAISALMER EDITORIAL MAGAZINE STORY
+   ------------------------------------------------------------- */
+.localStory {
+  background: #efe5d4;
+  padding-block: 110px;
+}
+
+.editorialSpread {
+  margin-bottom: 90px;
+}
+
+.editorialSpread:last-child {
+  margin-bottom: 0;
+}
+
+.spreadHeader {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  margin-bottom: 35px;
+  max-width: 820px;
+}
+
+.spreadNumber {
+  font-family: Georgia, serif;
+  font-size: 2.8rem;
+  color: #9c4826;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.spreadCategory {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9c4826;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.spreadHeader h3 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: #172d24;
+  margin-bottom: 12px;
+}
+
+.spreadHeader p {
+  font: 1.05rem/1.65 Georgia, serif;
+  color: #55625b;
+}
+
+.editorialPhotoWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #decbb3;
+}
+
+.editorialPhoto {
+  object-fit: cover;
+  object-position: var(--desktop-pos, center 40%);
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .editorialPhoto {
+    object-position: var(--mobile-pos, var(--desktop-pos, center 40%));
+  }
+}
+
+.editorialSpread:hover .editorialPhoto {
+  transform: scale(1.02);
+}
+
+.editorialCaption {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.editorialCaption strong {
+  font-size: 1.05rem;
+  color: #182e25;
+}
+
+.editorialCaption span {
+  font-size: 0.82rem;
+  color: #66726b;
+}
+
+.illustrativeTag {
+  color: #9c4826 !important;
+  font-style: italic;
+}
+
+/* Chapter 1: Citadel Duo (60/40) */
+.citadelDuo {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.citadelMain .editorialPhotoWrapper {
+  height: 480px;
+}
+
+.citadelSecondary .editorialPhotoWrapper {
+  height: 480px;
+}
+
+/* Chapter 2: Haveli Trio (50/25/25) */
+.haveliTrio {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  gap: 24px;
+}
+
+.trioCardLarge .editorialPhotoWrapper {
+  height: 420px;
+}
+
+.trioCardSmall .editorialPhotoWrapper {
+  height: 420px;
+}
+
+/* Chapter 3: Culture Duo (50/50) */
+.cultureDuo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.cultureCard .editorialPhotoWrapper {
+  height: 400px;
+}
+
+/* Chapter 4: Thar Panorama & Night Duo */
+.panoramaFeature {
+  margin-bottom: 30px;
+}
+
+.panoramaPhotoWrapper {
+  position: relative;
+  height: 460px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #decbb3;
+}
+
+.nightDuo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.nightCard .editorialPhotoWrapper {
+  height: 380px;
+}
+
+/* -------------------------------------------------------------
+   07 / JAISALMER EXPERIENCES
+   ------------------------------------------------------------- */
+.experienceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.experienceCard {
+  background: #faf7f0;
+  border: 1px solid #d8dcd3;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experienceCard:hover {
+  transform: translateY(-4px);
+  border-color: #103f32;
+  box-shadow: 0 16px 36px rgba(16, 63, 50, 0.08);
+}
+
+.experienceImageWrapper {
+  position: relative;
+  height: 320px;
+  background: #e2dbcb;
+}
+
+.experienceImage {
+  object-fit: cover;
+}
+
+.experienceNumber {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(250, 247, 240, 0.92);
+  color: #103f32;
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  padding: 6px 14px;
+  border-radius: 2px;
+}
+
+.experienceDetails {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.experienceCategory {
+  font-size: 0.74rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #a34c29;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.experienceDetails h3 {
+  font-size: 1.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #182e25;
+}
+
+.experienceDetails p {
+  font-size: 0.92rem;
+  color: #5c6761;
+  margin: 14px 0 22px;
+  line-height: 1.6;
+}
+
+.experienceCta {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #103f32;
+  border-bottom: 1px solid transparent;
+  width: fit-content;
+  transition: border-color 0.2s;
+}
+
+.experienceCard:hover .experienceCta {
+  border-color: #103f32;
+}
+
+/* -------------------------------------------------------------
+   08 / LOCAL LENS (PRACTICAL CONTEXT)
+   ------------------------------------------------------------- */
+.localLens {
+  background: #1c2b27;
+  color: #f5f1e6;
+  padding-block: 100px;
+}
+
+.lensLayout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+}
+
+.lensIntro .chapter {
+  color: #dfa962;
+  margin-bottom: 16px;
+}
+
+.lensIntro :global(.eyebrow) {
+  color: #dfa962;
+}
+
+.lensIntro h2 {
+  font-size: clamp(2.6rem, 4vw, 4rem);
+  color: #ffffff;
+}
+
+.lensIntro p {
+  color: #c9d1cb;
+  margin-top: 24px;
+  font: 1.1rem/1.7 Georgia, serif;
+  max-width: 440px;
+}
+
+.lensGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.lensCard {
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+.lensLabel {
+  color: #dfa962;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  display: block;
+}
+
+.lensCard h3 {
+  font-size: 1.3rem;
+  margin: 10px 0 10px;
+  color: #ffffff;
+}
+
+.lensCard p {
+  font-size: 0.88rem;
+  color: #d1dbd4;
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------
+   09 / HOW IT WORKS & WHY FOLKMILES
+   ------------------------------------------------------------- */
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.processCard {
+  background: #eee7da;
+  padding: 36px 30px;
+  border-radius: 4px;
+  border: 1px solid #ddd4c4;
+}
+
+.processCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.processIcon {
+  color: #a84d27;
+}
+
+.processStepNumber {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  color: #8c9b91;
+}
+
+.processCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #172d24;
+}
+
+.processCard p {
+  color: #5a6660;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.whySection {
+  background: #103f32;
+  color: #f7f3e8;
+}
+
+.whySection .sectionHeading h2 {
+  color: #ffffff;
+}
+
+.whySection :global(.eyebrow) {
+  color: #dfa962;
+}
+
+.whySection .headingSide {
+  color: #d6e0d8;
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.whyCard {
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  padding-top: 28px;
+}
+
+.whyNumber {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #dfa962;
+  letter-spacing: 0.12em;
+}
+
+.whyCard h3 {
+  font-size: 1.6rem;
+  margin: 18px 0 12px;
+  color: #ffffff;
+}
+
+.whyCard p {
+  color: #cad8ce;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------
+   10 / TRAVELLER TYPES & INTERNATIONAL TRAVEL
+   ------------------------------------------------------------- */
+.travellersSection {
+  background: #e6dfd1;
+  padding-block: 100px;
+}
+
+.travellersHeader {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 50px;
+}
+
+.travellersHeader h2 {
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+}
+
+.travellersHeader h2 em {
+  color: #b54b1a;
+}
+
+.travellersSub {
+  font: 1.15rem/1.6 Georgia, serif;
+  color: #535e58;
+  margin-top: 20px;
+}
+
+.travellerPills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 60px;
+}
+
+.travellerPill {
+  background: #faf7f0;
+  border: 1px solid #d3cbba;
+  padding: 14px 22px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 280px;
+}
+
+.travellerPill strong {
+  font-size: 1rem;
+  color: #103f32;
+}
+
+.travellerPill span {
+  font-size: 0.78rem;
+  color: #647069;
+  line-height: 1.4;
+}
+
+.internationalCard {
+  background: #143228;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.internationalCopy :global(.eyebrow) {
+  color: #dfa962;
+}
+
+.internationalCopy h3 {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.internationalCopy p {
+  color: #d1dbd4;
+  font: 1.05rem/1.7 Georgia, serif;
+}
+
+.internationalFeatures {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.featureItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.checkIcon {
+  color: #dfa962;
+  margin-top: 4px;
+}
+
+.featureItem strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #ffffff;
+}
+
+.featureItem p {
+  font-size: 0.78rem;
+  color: #bfcec4;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* -------------------------------------------------------------
+   11 / DESTINATIONS SHOWCASE & B2B & GUIDES
+   ------------------------------------------------------------- */
+.destinations {
+  padding-block: 100px;
+}
+
+.destinationCard {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  min-height: 480px;
+  background: #123328;
+  color: white;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.destinationCard:hover {
+  box-shadow: 0 16px 40px rgba(18, 51, 40, 0.2);
+}
+
+.destinationCardImageWrapper {
+  position: relative;
+  min-height: 380px;
+}
+
+.destinationCardImage {
+  object-fit: cover;
+  object-position: var(--desktop-pos, center 40%);
+}
+
+@media (max-width: 768px) {
+  .destinationCardImage {
+    object-position: var(--mobile-pos, var(--desktop-pos, center 38%));
+  }
+}
+
+.destinationCardContent {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #153a2e;
+}
+
+.destinationStatusBadge {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e5b575;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.destinationCardContent h3 {
+  font-size: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.destinationTagline {
+  color: #e5b575;
+  font: italic 1.1rem Georgia, serif;
+  margin-top: 6px;
+}
+
+.destinationSnippet {
+  color: #c7d4cc;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 18px 0 28px;
+}
+
+.destinationLink {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-bottom: 1px solid #e5b575;
+  width: fit-content;
+  padding-bottom: 2px;
+}
+
+.comingSoon {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr auto;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #ccd1c9;
+  padding: 26px 0;
+  margin-top: 24px;
+}
+
+.comingSoonTag,
+.comingSoonBadge {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.comingSoonTag {
+  color: #923414;
+}
+
+.comingSoon p {
+  font: italic 1.05rem Georgia, serif;
+  color: #55615a;
+}
+
+.comingSoonBadge {
+  background: #e2d9cb;
+  color: #3b4742;
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+
+/* Travel Guides */
+.guidesSection {
+  padding-block: 100px;
+  background: #fdfbf7;
+}
+
+.guidesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.guideCard {
+  background: #ffffff;
+  border: 1px solid #e3dec3;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.guideCard:hover {
+  transform: translateY(-4px);
+  border-color: #103f32;
+}
+
+.guideImageWrapper {
+  position: relative;
+  height: 220px;
+  background: #ede6d6;
+}
+
+.guideImage {
+  object-fit: cover;
+}
+
+.guideCategoryBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(16, 63, 50, 0.9);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guideContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.guideDuration {
+  font-size: 0.74rem;
+  color: #a34c29;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.guideContent h3 {
+  font-size: 1.35rem;
+  color: #1b3027;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.guideContent p {
+  font-size: 0.88rem;
+  color: #5c6761;
+  margin: 12px 0 20px;
+  line-height: 1.6;
+}
+
+.guideReadMore {
+  margin-top: auto;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #103f32;
+}
+
+/* B2B Partners */
+.partnerSection {
+  background: #e8d9bd;
+  padding: 90px 0;
+}
+
+.partnerGrid {
+  max-width: 900px;
+}
+
+.partnerCopy .chapter {
+  margin-bottom: 12px;
+}
+
+.partnerCopy h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  margin-bottom: 20px;
+}
+
+.partnerCopy > p {
+  font: 1.15rem/1.7 Georgia, serif;
+  color: #4b5751;
+  margin-bottom: 35px;
+}
+
+.partnerServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.partnerServiceItem {
+  background: rgba(255, 255, 255, 0.45);
+  padding: 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.partnerServiceItem strong {
+  display: block;
+  font-size: 0.92rem;
+  color: #103f32;
+  margin-bottom: 4px;
+}
+
+.partnerServiceItem span {
+  font-size: 0.78rem;
+  color: #5c6660;
+  line-height: 1.4;
+}
+
+/* Social Gallery */
+.socialSection {
+  padding-block: 100px;
+}
+
+.socialHeader {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.socialHeader h2 {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+}
+
+.socialHeader p {
+  font: 1.05rem/1.6 Georgia, serif;
+  color: #657069;
+  margin-top: 12px;
+}
+
+.instagramLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #a84d27;
+  border-bottom: 1px solid #a84d27;
+  padding-bottom: 3px;
+  transition: color 0.2s;
+}
+
+.instagramLink:hover {
+  color: #103f32;
+  border-color: #103f32;
+}
+
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.socialCard {
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f1ebd9;
+  border: 1px solid #ded5c2;
+}
+
+.socialImageWrapper {
+  position: relative;
+  height: 180px;
+}
+
+.socialImage {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.socialCard:hover .socialImage {
+  transform: scale(1.06);
+}
+
+.socialCaption {
+  padding: 10px;
+}
+
+.socialCaption span {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a84d27;
+  font-weight: 700;
+  display: block;
+}
+
+.socialCaption p {
+  font-size: 0.74rem;
+  color: #55615a;
+  margin-top: 2px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* -------------------------------------------------------------
+   12 / FINAL CTA
+   ------------------------------------------------------------- */
+.finalCta {
+  min-height: 680px;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.finalImageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.finalPhoto {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.finalShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(16, 29, 26, 0.94) 0%,
+    rgba(16, 29, 26, 0.75) 50%,
+    rgba(16, 29, 26, 0.4) 100%
+  );
+}
+
+.finalInner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 60px;
+  width: 100%;
+}
+
+.finalCopy {
+  max-width: 680px;
+}
+
+.finalCopy :global(.eyebrow) {
+  color: #efc274;
+}
+
+.finalInner h2 {
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  color: #ffffff;
+}
+
+.finalInner h2 em {
+  color: #e5b575;
+}
+
+.finalCopy > p {
+  max-width: 600px;
+  margin: 25px 0 34px;
+  font: 1.2rem/1.7 Georgia, serif;
+  color: #e2eae5;
+}
+
+.finalCta :global(.button) {
+  background: #faf7f0;
+  color: #103f32;
+  border-color: #faf7f0;
+}
+
+.finalCta :global(.button.secondary) {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.brandLockup {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.brandLockup svg {
+  color: #efc274;
+  margin-bottom: 8px;
+}
+
+.brandLockup span {
+  display: block;
+  font: 3.2rem Georgia, serif;
+  color: #ffffff;
+}
+
+.brandLockup p {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #efc274;
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .principleGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .principleGrid article:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 30px;
+  }
+  .principleGrid article:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 30px;
+  }
+  .themeGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 240px;
+  }
+  .theme1, .theme2, .theme3, .theme4 {
+    grid-column: span 1;
+  }
+  .rajasthanTransition {
+    grid-template-columns: 1fr;
+  }
+  .transitionImage {
+    min-height: 380px;
+  }
+  .transitionGradient {
+    background: linear-gradient(0deg, #cb9058 0%, transparent 60%);
+  }
+  .rajasthanGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .citadelDuo {
+    grid-template-columns: 1fr;
+  }
+  .citadelMain .editorialPhotoWrapper,
+  .citadelSecondary .editorialPhotoWrapper {
+    height: 380px;
+  }
+  .haveliTrio {
+    grid-template-columns: 1fr 1fr;
+  }
+  .trioCardLarge {
+    grid-column: span 2;
+  }
+  .lensLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .whyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .internationalCard {
+    grid-template-columns: 1fr;
+  }
+  .guidesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .socialGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: 40px;
+  }
+  .heroInner {
+    padding-block: 40px 90px;
+  }
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-block: 80px;
+  }
+  .introCopy {
+    padding-top: 0;
+  }
+  .sectionHeading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 35px;
+  }
+  .principleGrid {
+    grid-template-columns: 1fr;
+  }
+  .principleGrid article + article {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 0;
+    padding-top: 25px;
+  }
+  .themeGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+  .rajasthanGrid {
+    grid-template-columns: 1fr;
+  }
+  .destinationIntro {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-block: 80px;
+  }
+  .spreadHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .haveliTrio {
+    grid-template-columns: 1fr;
+  }
+  .trioCardLarge {
+    grid-column: span 1;
+  }
+  .trioCardLarge .editorialPhotoWrapper,
+  .trioCardSmall .editorialPhotoWrapper {
+    height: 300px;
+  }
+  .cultureDuo {
+    grid-template-columns: 1fr;
+  }
+  .cultureCard .editorialPhotoWrapper {
+    height: 300px;
+  }
+  .panoramaPhotoWrapper {
+    height: 300px;
+  }
+  .nightDuo {
+    grid-template-columns: 1fr;
+  }
+  .nightCard .editorialPhotoWrapper {
+    height: 300px;
+  }
+  .experienceGrid {
+    grid-template-columns: 1fr;
+  }
+  .lensGrid {
+    grid-template-columns: 1fr;
+  }
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+  .internationalFeatures {
+    grid-template-columns: 1fr;
+  }
+  .destinationCard {
+    grid-template-columns: 1fr;
+  }
+  .destinationCardContent {
+    padding: 30px 24px;
+  }
+  .comingSoon {
+    grid-template-columns: 1fr;
+  }
+  .guidesGrid {
+    grid-template-columns: 1fr;
+  }
+  .partnerServicesGrid {
+    grid-template-columns: 1fr;
+  }
+  .socialGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .finalInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .brandLockup {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroBgImage,
+  .themeBgImg,
+  .editorialPhoto,
+  .socialImage {
+    transition: none !important;
+    transform: none !important;
+  }
+}

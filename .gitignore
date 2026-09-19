@@ -7,3 +7,8 @@ out/
 .sites-runtime/
 test-results/
 playwright-report/
+.data/
+launch-creative/
+*.zip
+*.docx
+1a1aeabf-*.png
