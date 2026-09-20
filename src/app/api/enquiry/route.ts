@@ -122,16 +122,11 @@ export async function POST(req: NextRequest) {
         status: 'new',
       });
 
-      // Dispatch notifications in background (resilient — will not fail lead)
-      sendLeadNotificationEmail(lead).catch((err) =>
-        console.error('Failed to send lead email:', err)
-      );
-
-      if (lead.email) {
-        sendCustomerAcknowledgementEmail(lead).catch((err) =>
-          console.error('Failed to send customer acknowledgement:', err)
-        );
-      }
+      // Dispatch notifications (await settlement so serverless execution completes cleanly)
+      await Promise.allSettled([
+        sendLeadNotificationEmail(lead),
+        lead.email ? sendCustomerAcknowledgementEmail(lead) : Promise.resolve(),
+      ]);
 
       return NextResponse.json({
         success: true,
@@ -164,9 +159,7 @@ export async function POST(req: NextRequest) {
       status: 'new',
     });
 
-    sendLeadNotificationEmail(lead).catch((err) =>
-      console.error('Failed to send partner lead email:', err)
-    );
+    await Promise.allSettled([sendLeadNotificationEmail(lead)]);
 
     return NextResponse.json({
       success: true,

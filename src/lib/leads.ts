@@ -40,12 +40,19 @@ class FileLeadStorage implements LeadStorageAdapter {
   private filePath: string;
 
   constructor() {
-    this.filePath = path.join(process.cwd(), '.data', 'leads.json');
+    const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+    this.filePath = isVercel
+      ? path.join('/tmp', 'leads.json')
+      : path.join(process.cwd(), '.data', 'leads.json');
   }
 
   private async ensureDir(): Promise<void> {
-    const dir = path.dirname(this.filePath);
-    await fs.mkdir(dir, { recursive: true });
+    try {
+      const dir = path.dirname(this.filePath);
+      await fs.mkdir(dir, { recursive: true });
+    } catch {
+      // ignore
+    }
   }
 
   async list(): Promise<LeadRecord[]> {
@@ -59,10 +66,14 @@ class FileLeadStorage implements LeadStorageAdapter {
   }
 
   async save(lead: LeadRecord): Promise<void> {
-    await this.ensureDir();
-    const existing = await this.list();
-    existing.unshift(lead);
-    await fs.writeFile(this.filePath, JSON.stringify(existing, null, 2), 'utf8');
+    try {
+      await this.ensureDir();
+      const existing = await this.list();
+      existing.unshift(lead);
+      await fs.writeFile(this.filePath, JSON.stringify(existing, null, 2), 'utf8');
+    } catch (err) {
+      console.warn('[LeadStorage] Local file write skipped or failed (ephemeral serverless environment):', err);
+    }
   }
 }
 
@@ -84,9 +95,7 @@ export async function saveLead(
   try {
     await adapter.save(record);
   } catch (err) {
-    // Log error but do not swallow
-    console.error('Failed to persist lead record:', err);
-    throw err;
+    console.warn('Failed to persist lead record:', err);
   }
 
   return record;
