@@ -23,6 +23,15 @@ export interface TravelGuideItem {
   relatedExperiences: string[];
   seoTitle: string;
   seoDescription: string;
+  quickAnswer?: {
+    question: string;
+    answer: string;
+    keyTakeaways: string[];
+  };
+  faqs?: {
+    question: string;
+    answer: string;
+  }[];
 }
 
 export const travelGuidesData: TravelGuideItem[] = [
@@ -40,6 +49,30 @@ export const travelGuidesData: TravelGuideItem[] = [
     summary: 'A complete seasonal breakdown of Jaisalmer’s desert climate: when to visit for pleasant fort walking, clear desert nights, and what to expect during transition months.',
     heroImage: '/images/jaisalmer/fort-palace.jpg',
     heroImageAlt: 'Golden morning sunlight on Jaisalmer Fort palace balconies',
+    quickAnswer: {
+      question: 'When is the best time to visit Jaisalmer?',
+      answer: 'The best time to visit Jaisalmer is between October and March. During these winter months, daytime temperatures range pleasantly between 20°C and 28°C (68°F to 82°F) with clear sunny skies, making fort walking and desert safaris comfortable. Nights in the Thar Desert are cool (8°C to 12°C), ideal for fireside camps and stargazing.',
+      keyTakeaways: [
+        'Peak Season: October to March (pleasant weather, open desert camps)',
+        'Winter Nights: December & January require warm layers (down to 8°C)',
+        'Desert Festival: Usually held in February under the full moon',
+        'Off-Season: April to September (summer heat exceeds 42°C, camps closed)',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is Jaisalmer worth visiting in October?',
+        answer: 'Yes. October marks the beginning of the tourist season. Desert camps reopen, afternoon temperatures soften, and visitor numbers are noticeably lower than peak December.',
+      },
+      {
+        question: 'Can you visit Jaisalmer in summer (April to June)?',
+        answer: 'Summer in the Thar Desert is harsh, with midday temperatures exceeding 42°C (108°F). Most desert camps close between April and September for seasonal maintenance.',
+      },
+      {
+        question: 'When is the Jaisalmer Desert Festival held?',
+        answer: 'The annual Desert Festival is held in February (Magh Poornima). It features Rajasthani folk music, Kalbelia dances, camel races, and cultural celebrations across the dunes.',
+      },
+    ],
     sections: [
       {
         title: 'The Golden Window: October to March (Peak Season)',
@@ -94,6 +127,30 @@ export const travelGuidesData: TravelGuideItem[] = [
     summary: 'Should you spend 2, 3, or 4 days in Jaisalmer? Compare realistic paces, travel times, and recommended daily flows based on your arrival and departure schedule.',
     heroImage: '/images/jaisalmer/camp-twilight.jpg',
     heroImageAlt: 'Illuminated desert camp under twilight sky in the Thar Desert near Jaisalmer',
+    quickAnswer: {
+      question: 'How many days are enough for Jaisalmer?',
+      answer: '3 days and 2 nights is the recommended duration for Jaisalmer. This allows one full day for the living fort, merchant havelis, and Gadisar Lake; a second day for Kuldhara ghost village and an overnight Thar Desert camp; and a third morning for quiet village trails before departure. A 2-day trip is possible but rushed, while 4 days allows an unhurried, offbeat pace.',
+      keyTakeaways: [
+        '2 Days / 1 Night: Fast-paced highlights (Fort + 1 sunset dune visit)',
+        '3 Days / 2 Nights: Ideal balance (1 night heritage hotel + 1 night desert camp)',
+        '4 Days / 3 Nights: In-depth slow travel (includes Bada Bagh, Kuldhara & rural trails)',
+        'Transit: Allow 5 hours by road or train from Jodhpur',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is 2 days enough for Jaisalmer?',
+        answer: 'Yes, 2 days and 1 night covers the core highlights: Jaisalmer Fort, Patwon Ki Haveli, and a sunset desert camp at Sam. However, the schedule will be packed.',
+      },
+      {
+        question: 'Can you do a day trip to Jaisalmer from Jodhpur?',
+        answer: 'A day trip is not recommended because the one-way drive takes approximately 4.5 to 5 hours (280 km). You would spend 10 hours driving with almost no time for the desert sunset.',
+      },
+      {
+        question: 'What does a 4-day itinerary add?',
+        answer: 'A fourth day gives you room to visit the abandoned ruins of Kuldhara, royal cenotaphs at Bada Bagh, Amar Sagar Lake, and offbeat desert trails without rushing.',
+      },
+    ],
     sections: [
       {
         title: 'Why Trip Duration Matters in Jaisalmer',
@@ -143,6 +200,30 @@ export const travelGuidesData: TravelGuideItem[] = [
     summary: 'How to explore Jaisalmer Fort respectfully as a living neighbourhood, navigate 12th-century Jain temples, and understand the climate-responsive sandstone carving of Patwon Ki Haveli.',
     heroImage: '/heritage.jpg',
     heroImageAlt: 'Ornate yellow sandstone jali lattice and balconies on Patwon Ki Haveli in Jaisalmer',
+    quickAnswer: {
+      question: 'Is Jaisalmer Fort a living fort?',
+      answer: 'Yes, Jaisalmer Fort (Sonar Qila) is one of the few fully living forts in the world. Built in 1156 AD atop Trikuta Hill, roughly 4,000 residents live within its sandstone ramparts. Entry to the public streets, havelis, and viewpoints is free and open 24/7. However, the Raja Mahal Fort Palace Museum and the cluster of 7 Jain temples charge separate ticket fees and have set visitor hours.',
+      keyTakeaways: [
+        'Living Fort: Over 4,000 residents live inside the ramparts',
+        'Fort Gates: Free public entry 24/7 through four grand stone gates',
+        'Jain Temples: Seven 12th–15th century temples open 8:00 AM to 12:00 PM',
+        'Best Timing: Early morning (8:00 AM) or sunset from cannon points',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is Jaisalmer Fort free to visit?',
+        answer: 'Yes, walking through the gates, alleys, residential streets, and public viewpoints of Jaisalmer Fort is completely free. Only the Fort Palace Museum (Raja Mahal) and the Jain temples require admission tickets.',
+      },
+      {
+        question: 'How much time is needed for Jaisalmer Fort?',
+        answer: 'Allocate 2.5 to 3.5 hours to walk the four fortified gates, tour the Raja Mahal museum, visit the carved Jain temples, and take in the panoramic rooftop view across the Golden City.',
+      },
+      {
+        question: 'Can cars or taxis drive inside Jaisalmer Fort?',
+        answer: 'No. The narrow stone lanes cannot accommodate cars. Taxis drop passengers at Gopa Chowk near the first gate (Akhai Pol). From there, you explore on foot or hire an auto-rickshaw up to the main square.',
+      },
+    ],
     sections: [
       {
         title: 'A Fort That is Still a Home',
@@ -188,6 +269,30 @@ export const travelGuidesData: TravelGuideItem[] = [
     summary: 'Everything you need to know about visiting the Thar Desert: choosing between Sam and quieter dunes, camp comfort standards, camel welfare, and night sky stargazing.',
     heroImage: '/desert.jpg',
     heroImageAlt: 'Rolling sand dunes in the Thar Desert near Jaisalmer at sunset',
+    quickAnswer: {
+      question: 'What happens on a Jaisalmer desert safari?',
+      answer: 'A standard Thar Desert safari begins with an afternoon drive (40–45 km) from Jaisalmer to the dunes, followed by a sunset camel ride or 4x4 dune trail. Evening brings welcoming masala chai, Kalbelia folk dance, and Manganiyar desert music around a bonfire, concluded by a traditional Rajasthani dinner and an overnight stay in an ensuite Swiss tent.',
+      keyTakeaways: [
+        'Location: Sam Sand Dunes (classic) or Khuri / private mobile dunes (quiet)',
+        'Timing: Afternoon departure (2:30–3:30 PM), returning next morning (9:00 AM)',
+        'Tents: Modern Swiss tents include private ensuite bathrooms with running water',
+        'Night Temps: Winter drops to 7°C–12°C; warm jackets and woollens are essential',
+      ],
+    },
+    faqs: [
+      {
+        question: 'What is the difference between Sam Sand Dunes and Khuri?',
+        answer: 'Sam Dunes is larger and more famous, featuring numerous luxury camps and lively cultural programs. Khuri Dunes is quieter, less commercialized, and better suited for travellers seeking peace and darker skies for stargazing.',
+      },
+      {
+        question: 'Are desert tents safe and comfortable for families?',
+        answer: 'Yes. Verified FolkMiles partner camps provide weather-proof Swiss canvas tents with locked wooden doors, solid beds, electric lighting, and clean attached western bathrooms with hot water.',
+      },
+      {
+        question: 'Can you do a desert safari without staying overnight?',
+        answer: 'Yes. Sunset desert day trips allow you to enjoy the camel trek, sunset on the dunes, and the evening cultural folk performance, followed by a private transfer back to your city hotel by 9:30 PM.',
+      },
+    ],
     sections: [
       {
         title: 'Understanding the Thar Desert Landscape',
@@ -237,6 +342,30 @@ export const travelGuidesData: TravelGuideItem[] = [
     summary: 'Discover the ingenious flavours of Thar desert cooking: Dal Baati Churma, Ker Sangri, hot Bajra rotis, and where to find genuine Rajasthani recipes.',
     heroImage: '/images/india/food.jpg',
     heroImageAlt: 'Traditional Rajasthani thali featuring Dal Baati Churma, Ker Sangri, and gatte ki sabzi',
+    quickAnswer: {
+      question: 'What is special about Jaisalmer food?',
+      answer: 'Jaisalmer food is defined by arid desert ingenuity. Because fresh vegetables were traditionally scarce, cooking relies on sun-dried berries (Ker), wild desert beans (Sangri), chickpea flour (Besan), buttermilk, and clarified butter (ghee). Iconic dishes include Dal Baati Churma, Ker Sangri, Gatte ki Sabzi, Bajra Roti with white butter, and Ghotua Ladoo.',
+      keyTakeaways: [
+        'Dal Baati Churma: The quintessential celebratory Rajasthani meal',
+        'Ker Sangri: Tangy wild desert beans and capers cooked in mustard oil',
+        'Ghotua Ladoo: Jaisalmer’s famous sweet from Dhanraj Ranmal Bhatia',
+        'Dietary Note: Jaisalmer has exceptional vegetarian and Jain food options',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is vegetarian food easy to find in Jaisalmer?',
+        answer: 'Yes, Jaisalmer has a rich vegetarian food culture deeply rooted in Jain and Marwari traditions. Pure vegetarian restaurants and haveli dining halls are widespread.',
+      },
+      {
+        question: 'Where can you buy authentic Ghotua Ladoo?',
+        answer: 'Dhanraj Ranmal Bhatia, located near the fort entrance, has crafted authentic Ghotua Ladoo since the 19th century using roasted gram flour, mawa, and cardamom.',
+      },
+      {
+        question: 'Is drinking water safe in Jaisalmer restaurants?',
+        answer: 'Travellers should drink sealed bottled or reverse-osmosis (RO) filtered water. FolkMiles private vehicles provide complimentary filtered water bottles during tours.',
+      },
+    ],
     sections: [
       {
         title: 'The Philosophy of Desert Cuisine',
@@ -272,3 +401,4 @@ export const travelGuidesData: TravelGuideItem[] = [
 export function getGuideBySlug(slug: string): TravelGuideItem | undefined {
   return travelGuidesData.find((g) => g.slug === slug);
 }
+

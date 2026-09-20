@@ -23,7 +23,7 @@ const email = z
 const optional = (max = 500) =>
   z.string().trim().max(max).optional().or(z.literal(''));
 
-const consent = z.literal('true', {
+const consent = z.union([z.literal('true'), z.literal(true)], {
   error: 'Please confirm you agree to the privacy policy.',
 });
 

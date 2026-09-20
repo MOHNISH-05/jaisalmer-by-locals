@@ -78,6 +78,37 @@ export default async function TravelGuideArticlePage({ params }: { params: Promi
           {g.summary}
         </p>
 
+        {g.quickAnswer && (
+          <div
+            style={{
+              background: '#f4f8f6',
+              border: '1px solid #c2ded3',
+              borderRadius: '12px',
+              padding: '24px 28px',
+              marginTop: '24px',
+              marginBottom: '8px',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+              <Sparkles size={18} style={{ color: '#103f32' }} />
+              <strong style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#103f32' }}>
+                Quick Answer · At a Glance
+              </strong>
+            </div>
+            <p style={{ fontSize: '1.05rem', lineHeight: 1.65, color: '#1c2e26', fontWeight: 500, margin: '0 0 16px' }}>
+              {g.quickAnswer.answer}
+            </p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
+              {g.quickAnswer.keyTakeaways.map((point) => (
+                <li key={point} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.86rem', color: '#33443c' }}>
+                  <Check size={15} style={{ color: '#103f32', flexShrink: 0, marginTop: '3px' }} />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '16px', fontSize: '0.88rem', color: '#2d3832' }}>
           <User size={16} style={{ color: '#1f5b45' }} />
           <span>By <strong>{g.author}</strong> ({g.authorRole})</span>
@@ -133,6 +164,36 @@ export default async function TravelGuideArticlePage({ params }: { params: Promi
               )}
             </article>
           ))}
+
+          {/* Frequently Asked Questions */}
+          {g.faqs && g.faqs.length > 0 && (
+            <section style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid #e0dad0' }}>
+              <Eyebrow>Frequently Asked Questions</Eyebrow>
+              <h3 style={{ fontSize: '1.4rem', color: '#1c2621', marginBottom: '20px' }}>
+                Common Questions About {g.title.split(':')[0]}
+              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {g.faqs.map((faq) => (
+                  <details
+                    key={faq.question}
+                    style={{
+                      background: '#faf7f2',
+                      border: '1px solid #e5e0d8',
+                      borderRadius: '8px',
+                      padding: '16px 20px',
+                    }}
+                  >
+                    <summary style={{ fontWeight: 600, fontSize: '0.98rem', color: '#1c2621', cursor: 'pointer' }}>
+                      {faq.question}
+                    </summary>
+                    <p style={{ marginTop: '10px', fontSize: '0.92rem', color: '#3f4d45', lineHeight: 1.65, margin: '10px 0 0' }}>
+                      {faq.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Action Callout */}
           <div
@@ -251,23 +312,42 @@ export default async function TravelGuideArticlePage({ params }: { params: Promi
       <JsonLd
         value={{
           '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: g.title,
-          description: g.summary,
-          datePublished: g.publishDate,
-          author: {
-            '@type': 'Organization',
-            name: g.author,
-          },
-          publisher: {
-            '@type': 'Organization',
-            name: 'FolkMiles',
-            logo: {
-              '@type': 'ImageObject',
-              url: `${brand.domain}/logo.svg`,
+          '@graph': [
+            {
+              '@type': 'Article',
+              headline: g.title,
+              description: g.summary,
+              datePublished: g.publishDate,
+              author: {
+                '@type': 'Organization',
+                name: g.author,
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'FolkMiles',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: `${brand.domain}/logo.svg`,
+                },
+              },
+              ...(brand.domain ? { url: `${brand.domain}/travel-guides/${g.slug}` } : {}),
             },
-          },
-          ...(brand.domain ? { url: `${brand.domain}/travel-guides/${g.slug}` } : {}),
+            ...(g.faqs && g.faqs.length > 0
+              ? [
+                  {
+                    '@type': 'FAQPage',
+                    mainEntity: g.faqs.map((faq) => ({
+                      '@type': 'Question',
+                      name: faq.question,
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: faq.answer,
+                      },
+                    })),
+                  },
+                ]
+              : []),
+          ],
         }}
       />
     </>

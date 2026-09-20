@@ -14,7 +14,17 @@ export const metadata: Metadata = {
     'Explore India through locally planned journeys, authentic experiences and personalized tours, beginning in Jaisalmer, Rajasthan.',
   ...(brand.domain ? { metadataBase: new URL(brand.domain) } : {}),
   icons: { icon: '/logo.svg' },
-  robots: { index: process.env.PUBLIC_LAUNCH_READY === 'true', follow: true },
+  robots: {
+    index: process.env.NEXT_PUBLIC_NO_INDEX === 'true' ? false : true,
+    follow: true,
+    googleBot: {
+      index: process.env.NEXT_PUBLIC_NO_INDEX === 'true' ? false : true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
 };
 
