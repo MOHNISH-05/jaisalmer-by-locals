@@ -4,9 +4,11 @@ import { IndiaStory } from '@/components/home/india-story';
 import { RajasthanSection } from '@/components/home/rajasthan-section';
 import { JaisalmerReveal } from '@/components/home/jaisalmer-reveal';
 import { JaisalmerStory } from '@/components/home/jaisalmer-story';
+import { PopularPackages } from '@/components/home/popular-packages';
 import { JaisalmerExperiences } from '@/components/home/jaisalmer-experiences';
 import { LocalLens } from '@/components/home/local-lens';
 import { PlanningValue } from '@/components/home/planning-value';
+import { TravellerStories } from '@/components/home/traveller-stories';
 import { DestinationsB2BGuides } from '@/components/home/destinations-b2b-guides';
 import { FinalCTA } from '@/components/home/final-cta';
 import { JsonLd, metadata } from '@/lib/seo';
@@ -15,8 +17,8 @@ import { brand } from '@/lib/config';
 
 export const generateMetadata = () =>
   metadata(
-    'Explore India by Locals',
-    'Explore India with FolkMiles through locally planned journeys, authentic experiences and personalized tours. Our first destination begins in Jaisalmer, Rajasthan.',
+    'FolkMiles | Explore India by Locals – Tours & Local Experiences',
+    'Explore India with FolkMiles through locally planned journeys, authentic experiences and personalized tours. Our first active destination begins in Jaisalmer, Rajasthan.',
     '/'
   );
 
@@ -29,9 +31,11 @@ export default function Home() {
       <RajasthanSection />
       <JaisalmerReveal />
       <JaisalmerStory />
+      <PopularPackages />
       <JaisalmerExperiences />
-      <LocalLens />
       <PlanningValue />
+      <LocalLens />
+      <TravellerStories />
       <DestinationsB2BGuides />
       <FinalCTA />
 
@@ -56,6 +60,16 @@ export default function Home() {
                     },
                   }
                 : {}),
+            },
+            {
+              '@type': 'TravelAgency',
+              name: 'FolkMiles',
+              alternateName: 'FolkMiles India',
+              description:
+                'Explore India with FolkMiles through locally planned journeys, authentic experiences and personalized tours. Beginning in Jaisalmer, Rajasthan.',
+              telephone: folkMilesContact.phone,
+              email: folkMilesContact.email,
+              ...(brand.domain ? { url: brand.domain } : {}),
             },
             {
               '@type': 'WebSite',

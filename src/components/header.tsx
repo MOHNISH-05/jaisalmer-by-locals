@@ -6,11 +6,11 @@ import Link from 'next/link';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Destinations', href: '/#destinations' },
-  { label: 'Experiences', href: '/#experiences' },
-  { label: 'About FolkMiles', href: '/about' },
-  { label: 'Travel Guides', href: '/#travel-guides' },
-  { label: 'B2B Partners', href: '/b2b-travel-partners' },
+  { label: 'Destinations', href: '/destinations/jaisalmer' },
+  { label: 'Packages', href: '/jaisalmer-packages' },
+  { label: 'Experiences', href: '/experiences' },
+  { label: 'Travel Guides', href: '/travel-guides' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 

@@ -50,8 +50,9 @@ export function Footer() {
         <div>
           <h3>Explore</h3>
           <Link href="/destinations/jaisalmer">Jaisalmer, Rajasthan</Link>
-          <Link href="/experiences/jaisalmer-desert-safari">Desert experiences</Link>
-          <Link href="/experiences/jaisalmer-fort-heritage">Fort & heritage</Link>
+          <Link href="/jaisalmer-packages">Jaisalmer tour packages</Link>
+          <Link href="/experiences">Signature experiences</Link>
+          <Link href="/travel-guides">Travel guides</Link>
           <span className="muted">More of India · Coming later</span>
         </div>
 

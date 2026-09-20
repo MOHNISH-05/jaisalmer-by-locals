@@ -12,3 +12,5 @@ launch-creative/
 *.zip
 *.docx
 1a1aeabf-*.png
+
+.vercel

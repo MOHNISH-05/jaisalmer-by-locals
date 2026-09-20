@@ -14,7 +14,42 @@ export const faqs = [
 export type EditorialSection = {title:string; body:string};
 export type EditorialPage = {title:string;eyebrow:string;description:string;image?:string;sections:EditorialSection[]};
 export const pages: Record<string,EditorialPage> = {
- 'about':{title:'Good journeys begin with people.',eyebrow:'The FolkMiles story',description:'An India-wide idea. A local beginning. We are building a travel brand around the people who know a place as home.',image:'heritage',sections:[{title:'Folk means people. Miles means journeys.',body:'Explore by Locals is the principle behind FolkMiles: let local knowledge shape the experience, from the rhythm of a neighbourhood to the practical details of a day on the road.'},{title:'Starting in Jaisalmer',body:'Jaisalmer is our first live destination. We are focusing on thoughtful private trip planning here before expanding destination by destination. All other destinations are coming later and are not currently bookable.'},{title:'Trust is in the details',body:'Clear scope, written quotations and honest communication matter more than big promises. We want you to understand what is proposed, what is optional and what still needs confirmation.'},{title:'Growing through relationships',body:'Our longer-term ambition is to build destination-level local networks across India, working with accommodation providers, guides, drivers and experience hosts who share an interest in considerate travel.'}]},
+ 'about':{
+  title:'Good journeys begin with people.',
+  eyebrow:'The FolkMiles Story',
+  description:'An India-wide vision. A local beginning. FolkMiles is a travel company built around the people who know a destination as home.',
+  image:'heritage',
+  sections:[
+    {
+      title:'What is FolkMiles?',
+      body:'FolkMiles is an India-focused travel company creating personalized, locally informed journeys. We connect travellers directly with the real culture, landscapes, and stories of a destination through the knowledge of people who live there.'
+    },
+    {
+      title:'Folk means people. Miles means journeys.',
+      body:'Our name reflects our philosophy: "Folk" honours the residents, hereditary storytellers, drivers, craftspeople, and cooks who give a place its character. "Miles" represents the distance travelled with an open heart. Together, they form our core promise: Explore by Locals.'
+    },
+    {
+      title:'What does "Explore by Locals" mean?',
+      body:'It means stepping away from commercial tourist checklists and cookie-cutter tour buses. It means knowing which fort bastions catch the best morning light, which family-run havelis serve the most authentic ker sangri, and where to find undisturbed sand dunes away from noisy vehicular strips.'
+    },
+    {
+      title:'Why was FolkMiles created?',
+      body:'Modern travel in India often suffers from two extremes: rushed, commercial package tours that reduce living cultures to mere photo stops, or completely unguided travel where visitors miss the deeper historical and human context. FolkMiles was created to bridge this gap—offering private, thoughtful journeys with human-level support.'
+    },
+    {
+      title:'Why begin with Jaisalmer?',
+      body:'Jaisalmer is our first live destination. Because of its living 12th-century fort, ancient Silk Route merchant mansions, and the vast silence of the Thar Desert, Jaisalmer demands nuanced local knowledge. We chose to build deep operational roots, verified partner relationships, and exceptional private itineraries here before expanding.'
+    },
+    {
+      title:'The future India vision',
+      body:'Our long-term ambition is pan-Indian. We are establishing destination-level networks destination by destination—across the palaces of Rajasthan, the valleys of the Himalayas, the ghats of Varanasi, and the backwaters of Kerala. We expand only where we have verified ground relationships, ensuring every future destination maintains the same standard of local integrity.'
+    },
+    {
+      title:'How FolkMiles plans trips differently',
+      body:'Every journey is private and customizable. We do not use rigid bus schedules or hidden booking markups. We provide clear, itemized written quotations, assign dedicated local drivers and guides, and remain reachable on WhatsApp and phone before and during your trip.'
+    }
+  ]
+ },
  'experiences/jaisalmer-desert-safari':{title:'The desert has its own pace.',eyebrow:'Jaisalmer desert safari',description:'A sunset visit, a quiet evening or a camp stay: build your Thar Desert experience around how you like to travel.',image:'desert',sections:[{title:'Choose your desert experience',body:'Discuss a dunes visit with transfers, an evening with a meal or a camp stay. Jeep and camel experiences are optional and subject to operator arrangements. Confirm the location, travel time and what is included before booking.'},{title:'Plan around the light, not a promise',body:'Allow time to reach the dunes before sunset rather than rushing from the city. Weather, visibility and seasonal conditions vary; a particular sunset, starry sky or wildlife sighting cannot be promised.'},{title:'Camp categories and comfort',body:'Compare facilities rather than labels alone. Ask about attached bathrooms, bedding, power, meal arrangements, noise, accessibility and the distance to the dunes. No camp or room is reserved until explicitly confirmed.'},{title:'Jeep and camel considerations',body:'Tell us about comfort, mobility and children’s ages when planning. Ask the operator about activity conditions and equipment. Walking or a quieter seated experience can be discussed instead. Do not pressure animals or handlers for a photograph.'},{title:'A desert visit with family',body:'Plan breaks, drinking water, sun protection and suitable layers for your dates. Keep transfers manageable and discuss a return-to-city option if an overnight camp does not suit your group.'},{title:'Leave the dunes as you found them',body:'Carry litter back, avoid disturbing plants and animals, and use agreed routes. Ask before photographing people. Treat villages as people’s homes, not staged attractions.'},{title:'What affects the quotation',body:'Transfer distance, private or shared arrangements, camp category, meals, dates, group size and optional activities all affect cost. Ask for each selected service to be listed in writing.'}]},
  'experiences/jaisalmer-fort-heritage':{title:'A living city. A thousand small stories.',eyebrow:'Jaisalmer fort & heritage',description:'Look beyond the skyline: explore the fort, carved havelis and everyday life in the old city.',image:'heritage',sections:[{title:'A fort that is still a home',body:'Jaisalmer Fort is a living neighbourhood as well as a historic landmark. Give residents space, keep lanes clear and follow local instructions around homes and places of worship.'},{title:'Havelis and old-city lanes',body:'Build a walk around the fort and selected haveli areas, with time to notice sandstone carving and changing streetscapes. Entrance arrangements and any tickets should be confirmed in your itinerary.'},{title:'Local context, at your pace',body:'Request a local guide and discuss your preferred language, interests and walking pace. Guide availability, duration and fees are confirmed as part of the quotation.'},{title:'When to walk',body:'Earlier or later parts of the day can make walking more comfortable in warmer conditions. Temple access and opening hours may shape the route, so leave room for adjustments.'},{title:'Respect is part of the visit',body:'Ask before photographing residents and craftspeople. Follow footwear and dress instructions at religious sites. Avoid entering private areas and do not touch delicate carvings.'},{title:'Make it part of a longer journey',body:'A short orientation fits a two-day visit; three or four days allows a slower walk, additional haveli time and optional food or craft stops alongside the desert.'}]},
  'b2b-travel-partners':{title:'Your clients. Our local attention.',eyebrow:'For travel professionals',description:'Jaisalmer ground-handling enquiries for travel agents, itinerary designers and group organisers.',sections:[{title:'Build a clear brief',body:'Share dates, passenger count, rooming needs, arrival details, budget and service requirements. We work from your brief to propose a Jaisalmer itinerary and requirement-based quotation.'},{title:'Ground arrangements, brought together',body:'Request coordination of stays, transport, local guides and selected experiences. Each service, inclusion, exclusion and availability condition is set out in writing before confirmation.'},{title:'An itinerary you can share',body:'Ask for a client-ready itinerary with daily flow, practical notes and clearly identified optional experiences. Branding arrangements are discussed separately and are not assumed.'},{title:'Communication that keeps the trip clear',body:'Agree a contact person, confirm changes in writing and share guest needs before travel. Response expectations and on-trip communication arrangements are agreed during onboarding.'},{title:'From first request to a working relationship',body:'Submit your business details and trip brief. We review the request, clarify scope, share a quotation and agree booking and payment terms before any services are confirmed. Commission or credit arrangements are never implied.'}]},
@@ -26,4 +61,27 @@ export const legalPages: Record<string,EditorialPage> = {
  'terms-and-conditions':{title:'Terms & conditions',eyebrow:'Before you travel',description:'Read the written quotation and booking conditions carefully before confirming your journey.',sections:[{title:'Enquiries and confirmations',body:'Submitting an enquiry is not a booking. Suggested itineraries are starting points. Services, pricing, dates and availability must be confirmed in writing before you make a booking decision.'},{title:'Scope and payments',body:'Your quotation should identify inclusions, exclusions, payment schedule, taxes where applicable and relevant supplier conditions. Do not assume transport, meals, tickets or activities are included unless listed.'},{title:'Travel responsibilities',body:'Share accurate traveller and arrival information, relevant access needs and any changes that affect arrangements. Carry documents required for your journey and follow local rules and provider instructions.'},{title:'Changes and external conditions',body:'Weather, local restrictions, transport changes or supplier availability can affect a proposed schedule. Any material change and its implications should be discussed and recorded in writing.'},{title:'Questions or concerns',body:'Raise questions before confirming the quotation. The contact page provides the available channels for trip and service enquiries.'}]},
  'cancellation-policy':{title:'Cancellation policy',eyebrow:'When plans change',description:'Cancellation conditions depend on the services reserved and must be shared with your written quotation.',sections:[{title:'Before you confirm',body:'Ask for the cancellation deadlines, supplier charges, refundable and non-refundable amounts, and any date-change conditions for your specific booking. This page does not promise a universal refund percentage.'},{title:'Requesting a cancellation',body:'Send a cancellation or change request through the contact channel stated in your booking confirmation. Keep written acknowledgement and the booking reference for your records.'},{title:'Refund assessment',body:'Any refund depends on the agreed booking conditions, services already delivered and supplier charges. The amount, deductions and expected processing arrangements should be communicated in writing once assessed.'},{title:'Date changes and disrupted travel',body:'A date change may require new availability and pricing. If a provider cancels or external conditions disrupt a service, the available options depend on that service and the applicable booking terms.'}]},
 };
-export const paths = ['/', '/destinations/jaisalmer', ...tours.map(t=>`/destinations/jaisalmer/${t.slug}`), ...Object.keys(pages).map(p=>`/${p}`), '/contact',...Object.keys(legalPages).map(p=>`/${p}`)];
+export const paths = Array.from(
+  new Set([
+    '/',
+    '/destinations/jaisalmer',
+    '/jaisalmer-packages',
+    ...tours.map(t => `/destinations/jaisalmer/${t.slug}`),
+    '/experiences',
+    '/experiences/jaisalmer-desert-safari',
+    '/experiences/jaisalmer-fort-heritage',
+    '/experiences/desert-walking-jaisalmer',
+    '/experiences/stargazing-jaisalmer',
+    '/experiences/jaisalmer-village-experience',
+    '/experiences/rajasthani-food-experience',
+    '/travel-guides',
+    '/travel-guides/best-time-to-visit-jaisalmer',
+    '/travel-guides/how-many-days-in-jaisalmer',
+    '/travel-guides/jaisalmer-fort-guide',
+    '/travel-guides/jaisalmer-desert-safari-guide',
+    '/travel-guides/jaisalmer-food-guide',
+    ...Object.keys(pages).map(p => `/${p}`),
+    '/contact',
+    ...Object.keys(legalPages).map(p => `/${p}`),
+  ])
+);

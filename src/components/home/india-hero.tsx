@@ -48,11 +48,11 @@ export function IndiaHero() {
           <p>Journeys shaped by people who know the place beyond the map.</p>
 
           <div className="button-row">
-            <Link href="#our-story" className="button">
-              Discover FolkMiles <ArrowDown size={16} />
+            <Link href="/destinations/jaisalmer" className="button">
+              Explore Jaisalmer <ArrowUpRight size={16} />
             </Link>
             <Link href="/contact" className="button secondary" data-event="plan_trip_click">
-              Plan My Trip <ArrowUpRight size={16} />
+              Plan My Journey <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>
