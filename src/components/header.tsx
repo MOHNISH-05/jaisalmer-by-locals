@@ -32,7 +32,7 @@ export function Header() {
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="header-inner wrap">
         <Link className="logo" href="/" aria-label="FolkMiles home">
-          <Image src="/logo.svg" width={90} height={90} alt="FolkMiles — Explore India by Locals" priority />
+          <Image src="/logo.svg" width={105} height={105} alt="FolkMiles — Explore India by Locals" priority />
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navLinks.map((item) => (

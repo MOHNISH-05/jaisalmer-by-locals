@@ -16,15 +16,15 @@ export const imageAssets = {
   // 1. India Visuals (Lookbook concept imagery)
   india: {
     hero: {
-      src: '/images/india/hero-composite.jpg',
-      alt: 'Explore India by Locals — Composite journeys across the Himalayas, royal forts, backwaters and ghats',
-      subject: 'Composite India concept canvas',
-      sourceType: 'generated',
-      aspectRatio: '16:9',
-      dimensions: { width: 1683, height: 1190 },
-      objectPosition: 'center 30%',
-      desktopPosition: 'center 30%',
-      mobilePosition: '60% 25%',
+      src: '/images/jaisalmer/hero-folkmiles.png',
+      alt: 'Explore India by Locals — Jaisalmer Golden Fort architecture at sunrise',
+      subject: 'Jaisalmer Golden Fort architecture',
+      sourceType: 'real',
+      aspectRatio: '1916/821',
+      dimensions: { width: 1916, height: 821 },
+      objectPosition: 'right center',
+      desktopPosition: 'right center',
+      mobilePosition: '75% center',
     },
     mountains: {
       src: '/images/india/himalayas.jpg',
