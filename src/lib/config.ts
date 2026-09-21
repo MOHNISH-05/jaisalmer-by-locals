@@ -3,7 +3,7 @@ export { folkMilesContact };
 
 export const brand = {
   name: 'FolkMiles',
-  tagline: 'Explore India by Locals',
+  tagline: 'Explore by Locals',
   domain: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://folkmiles.com',
   email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || folkMilesContact.email,
   phone: folkMilesContact.phone,

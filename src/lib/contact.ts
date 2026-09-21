@@ -1,6 +1,6 @@
 export const folkMilesContact = {
   brand: 'FolkMiles',
-  tagline: 'Explore India by Locals',
+  tagline: 'Explore by Locals',
   email: 'folkmilesindia@gmail.com',
   phoneDisplay: '+91 7849931611',
   phoneRaw: '917849931611',

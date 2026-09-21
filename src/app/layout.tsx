@@ -25,7 +25,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: {
+      ...(process.env.BING_SITE_VERIFICATION
+        ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION }
+        : {}),
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -45,9 +52,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             '@context': 'https://schema.org',
             '@type': ['TravelAgency', 'Organization'],
             name: folkMilesContact.brand,
-            slogan: folkMilesContact.tagline,
+            slogan: 'Explore by Locals',
             telephone: folkMilesContact.phone,
             email: folkMilesContact.email,
+            sameAs: [
+              folkMilesContact.instagramUrl,
+            ],
             ...(brand.domain
               ? { url: brand.domain, logo: `${brand.domain}/logo.svg` }
               : {}),
