@@ -36,8 +36,9 @@ export default async function TourPage({ params }: { params: Promise<{ tour: str
   const pkg = getPackageBySlug(tour);
   if (!pkg) notFound();
 
+  const pkgPriceText = pkg.price ? `starting from ₹${pkg.price.toLocaleString('en-IN')}/person` : '';
   const encodedWaMessage = encodeURIComponent(
-    `Hi FolkMiles,\nI'm interested in the ${pkg.title} (${pkg.shortTitle}).\n\nTravel dates:\nNumber of travellers:\nCould you help me plan this journey?`
+    `Hi FolkMiles,\n\nI’m interested in the ${pkg.duration} Jaisalmer Journey ${pkgPriceText}.\n\nTravel date:\nNumber of travellers:\n\nCould you help me customize the trip?`
   );
   const waUrl = `https://wa.me/${folkMilesContact.whatsapp}?text=${encodedWaMessage}`;
 
@@ -131,6 +132,14 @@ export default async function TourPage({ params }: { params: Promise<{ tour: str
               gap: '20px',
             }}
           >
+            <div>
+              <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
+                Starting Price
+              </span>
+              <strong style={{ fontSize: '0.95rem', color: '#103f32' }}>
+                {pkg.price ? `From ₹${pkg.price.toLocaleString('en-IN')} / person` : 'Price on Request'}
+              </strong>
+            </div>
             <div>
               <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
                 Duration
@@ -460,11 +469,14 @@ export default async function TourPage({ params }: { params: Promise<{ tour: str
             }}
           >
             <Eyebrow>Transparent trip quotation</Eyebrow>
-            <h2 style={{ marginTop: '4px', marginBottom: '12px', color: '#1c2621' }}>
-              {pkg.price === null ? 'Price on Request' : `Starting from ₹${pkg.price.toLocaleString('en-IN')}`}
+            <h2 style={{ marginTop: '4px', marginBottom: '8px', color: '#103f32' }}>
+              {pkg.price === null ? 'Price on Request' : `From ₹${pkg.price.toLocaleString('en-IN')} / person`}
             </h2>
-            <p style={{ color: '#4a5750', lineHeight: 1.6, marginBottom: '24px' }}>
-              Trip cost depends on your travel dates, number of travellers, accommodation preference, and selected experiences. We do not use fake discount countdowns or placeholder prices; every guest receives an itemized, honest quotation.
+            <p style={{ color: '#4a5750', lineHeight: 1.6, marginBottom: '8px' }}>
+              Starting prices are per person. Final trip cost may vary depending on travel dates, number of travellers, accommodation category, transport requirements and selected experiences.
+            </p>
+            <p style={{ color: '#66726b', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '24px' }}>
+              We do not use fake discount countdowns or inflated crossed-out rates. Every guest receives an itemized, clear written quotation tailored to their travel dates.
             </p>
 
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -531,6 +543,19 @@ export default async function TourPage({ params }: { params: Promise<{ tour: str
             <h3 style={{ fontSize: '1.25rem', marginTop: '4px', marginBottom: '8px' }}>
               Plan Your {pkg.duration} Journey
             </h3>
+            {pkg.price && (
+              <div style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid var(--border, #f0eae1)' }}>
+                <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
+                  Starting Price
+                </span>
+                <strong style={{ fontSize: '1.3rem', color: '#103f32' }}>
+                  From ₹{pkg.price.toLocaleString('en-IN')} / person
+                </strong>
+                <span style={{ display: 'block', fontSize: '0.75rem', color: '#66726b', marginTop: '4px', lineHeight: 1.4 }}>
+                  Starting prices are per person. Final quote depends on dates and stay category.
+                </span>
+              </div>
+            )}
             <p style={{ fontSize: '0.88rem', color: '#4a5750', lineHeight: 1.5, marginBottom: '20px' }}>
               Share your dates and group size. We’ll prepare a personalized itinerary and written quotation.
             </p>

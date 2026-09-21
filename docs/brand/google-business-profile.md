@@ -61,9 +61,9 @@ Our offerings include 2 to 4-day private Jaisalmer tours, serene Thar desert saf
 | **2D1N Living Jaisalmer Tour** | Tour Operator | `https://folkmiles.com/destinations/jaisalmer/2-days-1-night` | ₹5,500 / person | Jaisalmer Fort, Havelis, Gadisar Lake, 1 night in Thar desert camp, camel safari, cultural folk dance |
 | **3D2N Complete Jaisalmer Experience** | Tour Operator | `https://folkmiles.com/destinations/jaisalmer/3-days-2-nights` | ₹9,500 / person | Fort walk, Patwon Haveli, Kuldhara ghost village, Lodurva Jain temples, Sam dunes sunset, private AC cab |
 | **4D3N Deep Desert & Border Odyssey** | Tour Operator | `https://folkmiles.com/destinations/jaisalmer/4-days-3-nights` | ₹14,500 / person | Comprehensive heritage, desert star-gazing, Tanot Mata temple, Longewala War Memorial border post, artisan communities |
-| **Jaisalmer Desert Safari & Sunset** | Activity / Experience | `https://folkmiles.com/experiences/jaisalmer-desert-safari` | ₹1,800 / person | Guided camel ride, secluded dunes away from crowds, evening folk music, Rajasthani dinner under stars |
-| **Living Fort & Haveli Heritage Walk** | Sightseeing Tour | `https://folkmiles.com/experiences/jaisalmer-fort-heritage` | ₹800 / person | Resident local storyteller, 12th-century living fort, Salim Singh & Patwon ki Haveli architecture, hidden alleys |
-| **Desert Walking & Stargazing** | Nature Tour | `https://folkmiles.com/experiences/desert-walking-jaisalmer` | ₹1,200 / person | Silent dune walking, flora/fauna orientation, desert flora, zero light-pollution astronomy |
+| **Thar Desert Sunset & Cultural Experience** | Activity / Experience | `https://folkmiles.com/experiences/jaisalmer-desert-safari` | ₹2,100 / person | Jaisalmer pickup & drop, camel ride on Thar dunes, sunset viewing, Rajasthani cultural folk program, campfire (seasonal), authentic dinner |
+| **Living Fort & Haveli Heritage Walk** | Sightseeing Tour | `https://folkmiles.com/experiences/jaisalmer-fort-heritage` | Custom Quote | Resident local storyteller, 12th-century living fort, Salim Singh & Patwon ki Haveli architecture, hidden alleys |
+| **Desert Walking & Stargazing** | Nature Tour | `https://folkmiles.com/experiences/desert-walking-jaisalmer` | Custom Quote | Silent dune walking, flora/fauna orientation, desert flora, zero light-pollution astronomy |
 
 ---
 

@@ -291,7 +291,9 @@ export default function JaisalmerDestinationPage() {
                   alignItems: 'center',
                 }}
               >
-                <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>Price on Request</strong>
+                <strong style={{ fontSize: '0.95rem', color: '#103f32' }}>
+                  {pkg.price ? `From ₹${pkg.price.toLocaleString('en-IN')}/person` : 'Price on Request'}
+                </strong>
                 <Link href={`/destinations/jaisalmer/${pkg.slug}`} className="button secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>
                   Itinerary <ArrowRight size={14} />
                 </Link>
@@ -346,11 +348,18 @@ export default function JaisalmerDestinationPage() {
                 <Image src={exp.cardImage} alt={exp.heroImageAlt} fill sizes="300px" style={{ objectFit: 'cover' }} />
               </div>
               <div style={{ padding: '16px' }}>
-                <span className="eyebrow" style={{ color: '#9c4826', fontSize: '0.75rem', marginBottom: '2px', display: 'block' }}>
-                  {exp.eyebrow}
-                </span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                  <span className="eyebrow" style={{ color: '#9c4826', fontSize: '0.75rem', marginBottom: '2px', display: 'block' }}>
+                    {exp.eyebrow}
+                  </span>
+                  {exp.price && (
+                    <span style={{ fontSize: '0.8rem', color: '#103f32', fontWeight: 600 }}>
+                      From ₹{exp.price.toLocaleString('en-IN')}
+                    </span>
+                  )}
+                </div>
                 <strong style={{ fontSize: '1.05rem', display: 'block', marginBottom: '4px' }}>
-                  {exp.title}
+                  {exp.cardTitle || exp.title}
                 </strong>
                 <span style={{ fontSize: '0.82rem', color: '#66726b' }}>
                   {exp.duration.split('(')[0].trim()} · View details →

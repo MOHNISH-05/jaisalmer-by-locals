@@ -143,10 +143,10 @@ export function PopularPackages() {
               >
                 <div>
                   <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
-                    Pricing
+                    Starting Price
                   </span>
-                  <strong style={{ fontSize: '1rem', color: '#1c2621' }}>
-                    {pkg.price === null ? 'Price on Request' : `Starting ₹${pkg.price.toLocaleString('en-IN')}`}
+                  <strong style={{ fontSize: '1.05rem', color: '#103f32' }}>
+                    {pkg.price === null ? 'Price on Request' : `From ₹${pkg.price.toLocaleString('en-IN')} / person`}
                   </strong>
                 </div>
                 <Link

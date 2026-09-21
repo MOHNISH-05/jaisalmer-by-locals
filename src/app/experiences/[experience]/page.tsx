@@ -4,9 +4,12 @@ import Link from 'next/link';
 import {
   ArrowUpRight,
   Check,
+  X as XIcon,
   Sparkles,
   AlertCircle,
   Package,
+  HelpCircle,
+  ShieldCheck,
 } from 'lucide-react';
 import { experiencesList, getExperienceBySlug } from '@/lib/experiences';
 import { getPackageBySlug } from '@/lib/packages';
@@ -36,15 +39,27 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
   const exp = getExperienceBySlug(experience);
   if (!exp) notFound();
 
-  const encodedWaMessage = encodeURIComponent(
-    `Hi FolkMiles,\nI'm interested in the ${exp.title} in Jaisalmer.\n\nCould you share availability and details for my upcoming trip?`
-  );
+  const isTharExperience = exp.slug === 'jaisalmer-desert-safari';
+
+  const encodedWaMessage = isTharExperience
+    ? encodeURIComponent(
+        `Hi FolkMiles,\n\nI’m interested in the Thar Desert Sunset & Cultural Experience starting from ₹2,100/person.\n\nTravel date:\nNumber of travellers:\n\nCould you help me plan it?`
+      )
+    : encodeURIComponent(
+        `Hi FolkMiles,\n\nI’m interested in the ${exp.title} in Jaisalmer.\n\nTravel date:\nNumber of travellers:\n\nCould you share availability and details?`
+      );
+
   const waUrl = `https://wa.me/${folkMilesContact.whatsapp}?text=${encodedWaMessage}`;
 
   // Find related packages
   const relatedPackagesData = exp.relatedPackages
     .map((slug) => getPackageBySlug(slug))
     .filter(Boolean);
+
+  // Find related experiences
+  const otherExperiences = experiencesList
+    .filter((e) => e.slug !== exp.slug)
+    .slice(0, 3);
 
   return (
     <>
@@ -59,10 +74,30 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
 
       {/* 1. HERO */}
       <section className="page-intro wrap">
-        <Eyebrow>{exp.eyebrow}</Eyebrow>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '8px' }}>
+          <span className="eyebrow" style={{ color: '#9c4826' }}>
+            {exp.eyebrow}
+          </span>
+          {exp.price && (
+            <span
+              style={{
+                background: '#f2eee8',
+                color: '#1f5b45',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                padding: '2px 10px',
+                borderRadius: '12px',
+              }}
+            >
+              From ₹{exp.price.toLocaleString('en-IN')} / person
+            </span>
+          )}
+        </div>
         <h1>{exp.title}</h1>
         <p style={{ maxWidth: '780px', fontSize: '1.15rem', color: '#4a5750', lineHeight: 1.6 }}>
-          {exp.shortDescription}
+          {isTharExperience
+            ? 'A complete evening in the Thar with camel ride, sunset, Rajasthani culture, campfire and dinner — with transfers from Jaisalmer.'
+            : exp.shortDescription}
         </p>
 
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '24px', alignItems: 'center' }}>
@@ -71,7 +106,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
             className="button"
             data-event="experience_enquiry_click"
           >
-            Enquire About This Experience <ArrowUpRight size={18} />
+            Plan This Experience <ArrowUpRight size={18} />
           </Link>
           <a
             href={waUrl}
@@ -98,36 +133,57 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
         />
       </div>
 
-      {/* Quick Fact Strip */}
+      {/* 2. AT-A-GLANCE SUMMARY */}
       <section className="wrap" style={{ marginBottom: '40px' }}>
         <div
           style={{
             background: '#faf7f2',
             border: '1px solid var(--border, #e5e0d8)',
-            borderRadius: '12px',
-            padding: '24px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '20px',
+            borderRadius: '16px',
+            padding: '28px',
           }}
         >
-          <div>
-            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
-              Duration
-            </span>
-            <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>{exp.duration}</strong>
-          </div>
-          <div>
-            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
-              Best Season / Time
-            </span>
-            <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>{exp.bestTime}</strong>
-          </div>
-          <div>
-            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
-              Suited For
-            </span>
-            <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>{exp.whoItSuits.join(' · ')}</strong>
+          <h2 style={{ fontSize: '1.2rem', marginBottom: '20px', color: '#1c2621' }}>
+            At a Glance
+          </h2>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '20px',
+            }}
+          >
+            {exp.atAGlance ? (
+              exp.atAGlance.map((item) => (
+                <div key={item.label}>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
+                    {item.label}
+                  </span>
+                  <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>{item.value}</strong>
+                </div>
+              ))
+            ) : (
+              <>
+                <div>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
+                    Duration
+                  </span>
+                  <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>{exp.duration}</strong>
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
+                    Best Season
+                  </span>
+                  <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>{exp.bestTime}</strong>
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
+                    Suited For
+                  </span>
+                  <strong style={{ fontSize: '0.95rem', color: '#1c2621' }}>{exp.whoItSuits.join(' · ')}</strong>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -135,11 +191,147 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
       {/* Main Content + Sidebar */}
       <section className="section wrap editorial-layout" style={{ paddingTop: '0' }}>
         <div className="prose">
-          {/* Overview */}
+          {/* 3. SHORT INTRODUCTION */}
           <section>
             <h2>Overview</h2>
             <p style={{ lineHeight: 1.7, fontSize: '1.05rem', color: '#2d3832' }}>{exp.overview}</p>
           </section>
+
+          {/* 4. AEO QUICK ANSWER */}
+          {exp.quickAnswer && (
+            <section
+              style={{
+                margin: '32px 0',
+                background: '#f4f8f6',
+                border: '1px solid #d1e4dc',
+                borderRadius: '12px',
+                padding: '24px',
+              }}
+            >
+              <Eyebrow>Quick Answer</Eyebrow>
+              <h3 style={{ fontSize: '1.15rem', color: '#1f5b45', margin: '4px 0 10px 0' }}>
+                {exp.quickAnswer.question}
+              </h3>
+              <p style={{ color: '#2d3832', lineHeight: 1.6, margin: 0, fontSize: '0.95rem' }}>
+                {exp.quickAnswer.answer}
+              </p>
+            </section>
+          )}
+
+          {/* 5. EXPERIENCE TIMELINE */}
+          {exp.timeline && (
+            <section style={{ margin: '36px 0' }}>
+              <Eyebrow>The evening flow</Eyebrow>
+              <h2 style={{ marginTop: '4px', marginBottom: '20px' }}>Experience Timeline</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {exp.timeline.map((step) => (
+                  <div
+                    key={step.step}
+                    style={{
+                      display: 'flex',
+                      gap: '16px',
+                      background: '#ffffff',
+                      border: '1px solid var(--border, #e8e3dc)',
+                      borderRadius: '12px',
+                      padding: '18px 20px',
+                      alignItems: 'flex-start',
+                    }}
+                  >
+                    <span
+                      style={{
+                        background: '#1f5b45',
+                        color: '#ffffff',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        width: '28px',
+                        height: '28px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      {step.step}
+                    </span>
+                    <div>
+                      <h3 style={{ margin: 0, fontSize: '1.05rem', color: '#1c2621' }}>{step.title}</h3>
+                      <p style={{ margin: '4px 0 0 0', fontSize: '0.9rem', color: '#4a5750', lineHeight: 1.5 }}>
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 6 & 7. INCLUSIONS & EXCLUSIONS */}
+          {exp.inclusions && (
+            <section style={{ margin: '36px 0' }}>
+              <Eyebrow>Clear & transparent</Eyebrow>
+              <h2 style={{ marginTop: '4px', marginBottom: '20px' }}>What’s Included & Optional</h2>
+
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                  gap: '24px',
+                }}
+              >
+                {/* Inclusions */}
+                <div
+                  style={{
+                    background: '#f4f8f6',
+                    border: '1px solid #d1e4dc',
+                    borderRadius: '12px',
+                    padding: '24px',
+                  }}
+                >
+                  <h3 style={{ fontSize: '1.1rem', color: '#1f5b45', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Check size={20} /> What’s Included
+                  </h3>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {exp.inclusions.map((item) => (
+                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.88rem', color: '#2d3832' }}>
+                        <Check size={16} style={{ color: '#1f5b45', flexShrink: 0, marginTop: '2px' }} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Exclusions */}
+                {exp.exclusions && (
+                  <div
+                    style={{
+                      background: '#fdf7f6',
+                      border: '1px solid #f2d8d5',
+                      borderRadius: '12px',
+                      padding: '24px',
+                    }}
+                  >
+                    <h3 style={{ fontSize: '1.1rem', color: '#9c4826', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <XIcon size={20} /> Not Included / Optional Add-ons
+                    </h3>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      {exp.exclusions.map((item) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.88rem', color: '#2d3832' }}>
+                          <XIcon size={16} style={{ color: '#9c4826', flexShrink: 0, marginTop: '2px' }} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              {/* Price Disclaimer */}
+              <p style={{ fontSize: '0.85rem', color: '#66726b', marginTop: '16px', lineHeight: 1.5 }}>
+                Starting prices are per person. Final trip cost may vary depending on travel dates, number of travellers, accommodation category, transport requirements and selected experiences.
+              </p>
+            </section>
+          )}
 
           {/* Why Different */}
           <section style={{ margin: '36px 0' }}>
@@ -303,6 +495,53 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
               ))}
             </div>
           </section>
+
+          {/* Related Experiences */}
+          {otherExperiences.length > 0 && (
+            <section style={{ margin: '40px 0' }}>
+              <Eyebrow>More to explore</Eyebrow>
+              <h2 style={{ marginTop: '4px', marginBottom: '20px' }}>Other Signature Experiences</h2>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                  gap: '16px',
+                }}
+              >
+                {otherExperiences.map((oe) => (
+                  <Link
+                    key={oe.id}
+                    href={`/experiences/${oe.slug}`}
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                      border: '1px solid var(--border, #e8e3dc)',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      background: '#ffffff',
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <div style={{ position: 'relative', height: '140px', width: '100%' }}>
+                      <Image src={oe.cardImage} alt={oe.heroImageAlt} fill sizes="240px" style={{ objectFit: 'cover' }} />
+                    </div>
+                    <div style={{ padding: '16px' }}>
+                      <span className="eyebrow" style={{ color: '#9c4826', fontSize: '0.75rem', marginBottom: '2px', display: 'block' }}>
+                        {oe.eyebrow}
+                      </span>
+                      <strong style={{ fontSize: '1rem', display: 'block', marginBottom: '4px' }}>
+                        {oe.cardTitle || oe.title}
+                      </strong>
+                      <span style={{ fontSize: '0.8rem', color: '#66726b' }}>
+                        View details →
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         {/* Sidebar */}
@@ -319,8 +558,21 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
           >
             <Eyebrow>Experience enquiry</Eyebrow>
             <h3 style={{ fontSize: '1.25rem', marginTop: '4px', marginBottom: '8px' }}>
-              Join This Experience
+              Plan This Experience
             </h3>
+            {exp.price && (
+              <div style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid var(--border, #f0eae1)' }}>
+                <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
+                  Starting Price
+                </span>
+                <strong style={{ fontSize: '1.3rem', color: '#103f32' }}>
+                  From ₹{exp.price.toLocaleString('en-IN')} / person
+                </strong>
+                <span style={{ display: 'block', fontSize: '0.75rem', color: '#66726b', marginTop: '4px', lineHeight: 1.4 }}>
+                  Starting prices are per person. Final quote depends on dates and party size.
+                </span>
+              </div>
+            )}
             <p style={{ fontSize: '0.88rem', color: '#4a5750', lineHeight: 1.5, marginBottom: '20px' }}>
               Tell us your preferred date and party size. We’ll confirm availability and integrate it into your itinerary.
             </p>
@@ -332,7 +584,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
                 style={{ width: '100%', justifyContent: 'center' }}
                 data-event="sidebar_experience_enquiry"
               >
-                Make an Enquiry <ArrowUpRight size={18} />
+                Plan This Experience <ArrowUpRight size={18} />
               </Link>
               <a
                 href={waUrl}
@@ -344,6 +596,32 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
               >
                 WhatsApp FolkMiles
               </a>
+            </div>
+
+            <div
+              style={{
+                borderTop: '1px solid var(--border, #f0eae1)',
+                paddingTop: '16px',
+                marginTop: '20px',
+                fontSize: '0.82rem',
+                color: '#66726b',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <ShieldCheck size={16} style={{ color: '#1f5b45' }} />
+                <span>Verified Local Partner Arrangements</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Sparkles size={16} style={{ color: '#9c4826' }} />
+                <span>Customizable Timings & Stops</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <HelpCircle size={16} style={{ color: '#1f5b45' }} />
+                <span>Transparent Written Quotations</span>
+              </div>
             </div>
           </div>
 
@@ -374,10 +652,17 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
                       border: '1px solid #e8e3dc',
                     }}
                   >
-                    <span style={{ fontSize: '0.75rem', color: '#9c4826', fontWeight: 600, display: 'block' }}>
-                      {pkg!.duration}
-                    </span>
-                    <strong style={{ fontSize: '0.9rem', color: '#1c2621', display: 'block' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                      <span style={{ fontSize: '0.75rem', color: '#9c4826', fontWeight: 600 }}>
+                        {pkg!.duration}
+                      </span>
+                      {pkg!.price && (
+                        <span style={{ fontSize: '0.75rem', color: '#1f5b45', fontWeight: 600 }}>
+                          From ₹{pkg!.price.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                    </div>
+                    <strong style={{ fontSize: '0.9rem', color: '#1c2621', display: 'block', marginTop: '2px' }}>
                       {pkg!.title}
                     </strong>
                     <span style={{ fontSize: '0.8rem', color: '#66726b', marginTop: '2px', display: 'block' }}>

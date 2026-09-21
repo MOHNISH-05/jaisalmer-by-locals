@@ -42,10 +42,19 @@ export function JaisalmerExperiences() {
             <div className={styles.experienceDetails}>
               <span className={styles.experienceCategory}>{item.eyebrow}</span>
               <h3>
-                {item.title} <ArrowUpRight size={20} />
+                {item.cardTitle || item.title} <ArrowUpRight size={20} />
               </h3>
               <p>{item.shortDescription}</p>
-              <span className={styles.experienceCta}>Explore Experience →</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid #f0eae1' }}>
+                {item.price ? (
+                  <strong style={{ fontSize: '0.9rem', color: '#103f32' }}>
+                    From ₹{item.price.toLocaleString('en-IN')}/person
+                  </strong>
+                ) : (
+                  <span style={{ fontSize: '0.85rem', color: '#66726b' }}>Price on Request</span>
+                )}
+                <span className={styles.experienceCta}>Explore →</span>
+              </div>
             </div>
           </Link>
         ))}

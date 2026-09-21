@@ -112,9 +112,9 @@ export function Experiences(){
             mobilePosition={desertMeta.mobilePosition}
           />
           <div>
-            <Eyebrow>Space to slow down</Eyebrow>
-            <h3>Into the Thar Desert <ArrowUpRight/></h3>
-            <p>Open skies, shifting sands and an evening at your pace.</p>
+            <Eyebrow>THAR DESERT · JAISALMER</Eyebrow>
+            <h3>Thar Sunset & Cultural Experience <ArrowUpRight/></h3>
+            <p>Camel ride, Thar sunset, Rajasthani culture, campfire and dinner. From ₹2,100/person.</p>
           </div>
         </Link>
         <Link className="experience-card" href="/experiences/jaisalmer-fort-heritage">

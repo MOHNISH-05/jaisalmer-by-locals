@@ -40,9 +40,14 @@ export default function ExperiencesPage() {
           }}
         >
           {experiencesList.map((exp) => {
-            const encodedWaMessage = encodeURIComponent(
-              `Hi FolkMiles,\nI'm interested in the ${exp.title}.\nCould you share availability and details?`
-            );
+            const isTharExperience = exp.slug === 'jaisalmer-desert-safari';
+            const encodedWaMessage = isTharExperience
+              ? encodeURIComponent(
+                  `Hi FolkMiles,\n\nI’m interested in the Thar Desert Sunset & Cultural Experience starting from ₹2,100/person.\n\nTravel date:\nNumber of travellers:\n\nCould you help me plan it?`
+                )
+              : encodeURIComponent(
+                  `Hi FolkMiles,\nI'm interested in the ${exp.title}.\nCould you share availability and details?`
+                );
             const waUrl = `https://wa.me/${folkMilesContact.whatsapp}?text=${encodedWaMessage}`;
 
             return (
@@ -87,6 +92,24 @@ export default function ExperiencesPage() {
                   >
                     <Clock size={12} /> {exp.duration.split('(')[0].trim()}
                   </div>
+                  {exp.price && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '12px',
+                        right: '12px',
+                        background: 'rgba(16, 63, 50, 0.95)',
+                        color: '#ffffff',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        padding: '3px 10px',
+                        borderRadius: '16px',
+                        backdropFilter: 'blur(4px)',
+                      }}
+                    >
+                      From ₹{exp.price.toLocaleString('en-IN')}
+                    </div>
+                  )}
                 </div>
 
                 {/* Content */}
@@ -105,7 +128,7 @@ export default function ExperiencesPage() {
                     </span>
                     <h2 style={{ fontSize: '1.3rem', marginTop: '2px', marginBottom: '10px' }}>
                       <Link href={`/experiences/${exp.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                        {exp.title}
+                        {exp.cardTitle || exp.title}
                       </Link>
                     </h2>
                     <p style={{ color: '#4a5750', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '20px' }}>
@@ -121,25 +144,40 @@ export default function ExperiencesPage() {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: '12px',
                     }}
                   >
-                    <Link
-                      href={`/experiences/${exp.slug}`}
-                      className="text-link"
-                      style={{ fontWeight: 600, fontSize: '0.9rem' }}
-                    >
-                      Discover Experience <ArrowRight size={16} />
-                    </Link>
-                    <a
-                      href={waUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="button secondary"
-                      style={{ padding: '6px 14px', fontSize: '0.8rem', borderColor: '#25D366', color: '#166534' }}
-                      data-event="whatsapp_click"
-                    >
-                      WhatsApp
-                    </a>
+                    <div>
+                      {exp.price ? (
+                        <strong style={{ fontSize: '1rem', color: '#103f32', display: 'block' }}>
+                          From ₹{exp.price.toLocaleString('en-IN')} / person
+                        </strong>
+                      ) : (
+                        <span style={{ fontSize: '0.9rem', color: '#66726b' }}>
+                          Price on Request
+                        </span>
+                      )}
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                      <Link
+                        href={`/experiences/${exp.slug}`}
+                        className="button secondary"
+                        style={{ padding: '6px 14px', fontSize: '0.85rem' }}
+                      >
+                        Details <ArrowRight size={14} />
+                      </Link>
+                      <a
+                        href={waUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button"
+                        style={{ padding: '6px 12px', fontSize: '0.85rem', background: '#25D366', borderColor: '#25D366', color: '#ffffff' }}
+                        data-event="whatsapp_click"
+                      >
+                        WhatsApp
+                      </a>
+                    </div>
                   </div>
                 </div>
               </article>

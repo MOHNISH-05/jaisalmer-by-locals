@@ -1,8 +1,20 @@
+export interface ExperienceTimelineStep {
+  step: number;
+  title: string;
+  description: string;
+}
+
+export interface ExperienceAtAGlance {
+  label: string;
+  value: string;
+}
+
 export interface ExperienceItem {
   id: string;
   slug: string;
   destination: string;
   title: string;
+  cardTitle?: string;
   eyebrow: string;
   shortDescription: string;
   overview: string;
@@ -22,6 +34,18 @@ export interface ExperienceItem {
   relatedPackages: string[];
   seoTitle: string;
   seoDescription: string;
+  price?: number | null;
+  currency?: string;
+  priceType?: 'on-request' | 'starting-from' | 'fixed';
+  priceUnit?: string;
+  inclusions?: string[];
+  exclusions?: string[];
+  atAGlance?: ExperienceAtAGlance[];
+  timeline?: ExperienceTimelineStep[];
+  quickAnswer?: {
+    question: string;
+    answer: string;
+  };
 }
 
 export const experiencesList: ExperienceItem[] = [
@@ -29,65 +53,142 @@ export const experiencesList: ExperienceItem[] = [
     id: 'exp-desert-safari',
     slug: 'jaisalmer-desert-safari',
     destination: 'Jaisalmer',
-    title: 'Thar Desert Safari & Camp Evening',
-    eyebrow: 'Space to slow down',
-    shortDescription: 'Sunset dunes, camel treks, luxury Swiss tents, fireside folk music, and starlit desert skies.',
-    overview: 'A thoughtful desert journey shaped around the natural light and pace of the Thar. Rather than rushing through noisy tourist clusters, FolkMiles guides you to quieter dune ridges for golden hour, followed by fireside Kalbelia dance, Manganiyar desert melodies, and an unhurried night under the stars.',
+    title: 'Thar Desert Sunset & Cultural Experience',
+    cardTitle: 'Thar Sunset & Cultural Experience',
+    eyebrow: 'THAR DESERT · JAISALMER',
+    shortDescription: 'A complete Thar evening with Jaisalmer pickup, desert transfer, camel ride, sunset, live Rajasthani culture, campfire, dinner and return transfer.',
+    overview: 'A complete evening journey into the Thar Desert shaped around the natural light and authentic rhythms of Rajasthan. Departing from Jaisalmer, enjoy comfortable desert transfers, a gentle camel ride across rolling sand dunes, and the golden hour sunset. Return to camp for live Kalbelia dance, Manganiyar desert melodies, an evening campfire program, and a freshly prepared Rajasthani dinner before returning to Jaisalmer.',
     heroImage: '/desert.jpg',
     cardImage: '/images/jaisalmer/camp-twilight.jpg',
     heroImageAlt: 'Rolling sand dunes in the Thar Desert near Jaisalmer at sunset',
-    duration: 'Afternoon to next morning (or afternoon to evening for day trips)',
+    duration: 'Evening Experience',
     bestTime: 'October to March (crisp afternoons and cool starry nights)',
-    whoItSuits: ['Couples seeking quiet sunsets', 'Families wanting comfortable tents', 'Travellers eager for genuine folk music'],
+    whoItSuits: ['Couples seeking quiet sunsets', 'Families wanting complete evening planning', 'Travellers eager for genuine folk music and desert culture'],
+    price: 2100,
+    currency: 'INR',
+    priceType: 'starting-from',
+    priceUnit: 'person',
+    inclusions: [
+      'Jaisalmer pickup',
+      'Transfer from Jaisalmer to the desert',
+      'Camel ride',
+      'Thar Desert sunset experience',
+      'Rajasthani cultural program',
+      'Campfire / evening fire program (subject to weather, safety and local operating conditions)',
+      'Dinner',
+      'Return transfer to Jaisalmer',
+    ],
+    exclusions: [
+      'Jeep safari (available as an optional add-on)',
+      'Overnight desert camp stay (available as an upgrade)',
+      'Hotel accommodation in Jaisalmer',
+      'Breakfast or daytime meals',
+      'Alcoholic beverages',
+      'Border tour to Longewala / Tanot',
+      'Private licensed monument guide',
+      'Monument entrance tickets',
+      'Airport or railway station transfer (available upon request)',
+      'Personal expenses, tips, and personal travel insurance',
+    ],
+    atAGlance: [
+      { label: 'Location', value: 'Thar Desert, Jaisalmer' },
+      { label: 'Experience', value: 'Sunset + Culture + Dinner' },
+      { label: 'Starting Price', value: '₹2,100 / person' },
+      { label: 'Duration', value: 'Evening Experience' },
+      { label: 'Pickup', value: 'Jaisalmer' },
+      { label: 'Return', value: 'Jaisalmer' },
+      { label: 'Camel Ride', value: 'Included' },
+      { label: 'Dinner', value: 'Included' },
+      { label: 'Cultural Program', value: 'Included' },
+      { label: 'Customization', value: 'Available' },
+    ],
+    timeline: [
+      { step: 1, title: 'Pickup in Jaisalmer', description: 'Convenient private pickup from your hotel or preferred central location in Jaisalmer.' },
+      { step: 2, title: 'Transfer toward the Thar Desert', description: 'Comfortable road journey across the changing arid landscape toward the dunes.' },
+      { step: 3, title: 'Camel ride', description: 'Gentle guided camel trek onto the sand dunes led by experienced local handlers.' },
+      { step: 4, title: 'Sunset experience', description: 'Time to pause and take in the golden hour light across wide desert horizons.' },
+      { step: 5, title: 'Rajasthani cultural program', description: 'Authentic folk music and traditional Kalbelia dance performances.' },
+      { step: 6, title: 'Campfire / evening fire program', description: 'Campfire / evening fire program, subject to weather, safety and local operating conditions.' },
+      { step: 7, title: 'Dinner', description: 'Traditional freshly prepared Rajasthani dinner buffet.' },
+      { step: 8, title: 'Return transfer to Jaisalmer', description: 'Comfortable private transfer bringing you back to your hotel or stay in Jaisalmer.' },
+    ],
+    quickAnswer: {
+      question: 'What is the FolkMiles Thar Desert Sunset & Cultural Experience?',
+      answer: 'The FolkMiles Thar Desert Sunset & Cultural Experience is an evening journey from Jaisalmer that includes desert transfers, a camel ride, sunset in the Thar, Rajasthani cultural performances, a campfire program, dinner and return transfer. Prices start from ₹2,100 per person.',
+    },
     whyDifferent: [
+      'Complete, transparent evening experience with all core transfers, activities, and dinner included',
       'Quieter dune sections selected away from congested commercial vehicular strips',
       'Emphasis on unhurried golden hour contemplation rather than loud, disruptive convoys',
       'Genuine hereditary folk musicians and dancers performing traditional art forms',
-      'Comfortable Swiss tents with solid beds, fresh linen, and ensuite modern bathrooms',
+      'Comfortable desert camp facilities with clean amenities and welcoming hospitality',
     ],
     whatGuestsExperience: [
       'Scenic afternoon drive from Jaisalmer city into the Thar Desert landscape',
-      'Gentle camel trek or quiet walk along the crest of wind-sculpted sand dunes',
-      'Watching the golden hour light deepen into amber and violet across the horizon',
-      'Welcoming masala chai and local snacks at camp upon return from the dunes',
-      'Fireside evening performance featuring Kalbelia dance and Manganiyar songs',
+      'Gentle camel trek along the crest of wind-sculpted sand dunes',
+      'Watching the golden hour light deepen into amber and violet across the Thar horizon',
+      'Welcoming masala chai and local refreshments at camp upon return from the dunes',
+      'Live evening cultural performance featuring Kalbelia dance and Manganiyar songs',
+      'Campfire / evening fire program, subject to weather, safety and local operating conditions',
       'Traditional Rajasthani buffet dinner featuring freshly prepared hot dishes',
-      'Overnight rest in an ensuite luxury Swiss tent or evening return transfer to city',
+      'Comfortable return transfer to your hotel or stay in Jaisalmer',
     ],
     localContext: 'The Thar is not a lifeless expanse; it is a living desert ecosystem inhabited by resilient communities, hardy desert vegetation, and hereditary artistic clans whose songs carry the oral history of Rajasthan.',
     importantNotes: [
       'Temperatures drop noticeably after sunset between November and February; warm layers are essential.',
-      'Camel and jeep activities are carried out with vetted local handlers who treat animals responsibly.',
-      'For travellers with back or neck sensitivities, a comfortable 4x4 transfer or scenic walk can replace camel rides.',
+      'Camel activities are carried out with vetted local handlers who treat animals responsibly.',
+      'For travellers with back or neck sensitivities, a comfortable walking route or vehicle drop can replace camel rides.',
+      'Campfire / evening fire program is subject to weather, safety and local operating conditions.',
     ],
     whatToBring: [
-      'Warm fleece jacket, shawl, or windbreaker for evening and dawn',
-      'Sunglasses, sun hat, and high-SPF sunscreen for afternoon',
+      'Warm fleece jacket, shawl, or windbreaker for evening',
+      'Sunglasses, sun hat, and high-SPF sunscreen for late afternoon',
       'Sturdy closed-toe shoes for walking on sand',
       'Camera or smartphone with spare battery (sand and cold affect charge)',
     ],
     customization: [
-      'Choose between an overnight tent stay or an evening excursion returning to your city hotel',
-      'Add a private dinner setup on secluded dunes away from the main camp courtyard',
-      'Combine with morning birdwatching near Desert National Park',
+      'Upgrade to an overnight luxury Swiss tent stay instead of an evening return',
+      'Add an optional 4x4 jeep dune safari excursion',
+      'Arrange a private dining setup on secluded dunes away from the main camp courtyard',
+      'Tailor dietary preferences for dinner (vegetarian, vegan, or mild spice preparations)',
     ],
     faq: [
       {
-        question: 'Is an overnight stay mandatory or can we do an evening safari only?',
-        answer: 'You can do either. We frequently organize evening safaris where you enjoy the sunset, camel trek, folk music, and dinner before our private chauffeur drives you back to your hotel in Jaisalmer.',
+        question: 'What is included in the ₹2,100 starting price?',
+        answer: 'The ₹2,100 per person starting price includes Jaisalmer pickup, transfer to the desert, camel ride, Thar sunset experience, live Rajasthani cultural program, campfire program, dinner, and return transfer to Jaisalmer.',
       },
       {
-        question: 'Are the desert tents comfortable and clean?',
-        answer: 'Yes. We work only with verified desert camps featuring spacious Swiss tents with proper raised beds, clean cotton linens, charging points, and attached tiled bathrooms with running hot water.',
+        question: 'Does FolkMiles provide pickup from Jaisalmer?',
+        answer: 'Yes. Convenient pickup from your hotel or central location in Jaisalmer is included in the starting price.',
       },
       {
-        question: 'Is the camel ride safe for children and seniors?',
-        answer: 'Yes. Local handlers lead each camel on foot at a gentle pace. However, if anyone in your party prefers not to ride a camel, our private vehicle can take you directly to the dunes.',
+        question: 'Is the camel ride included?',
+        answer: 'Yes. A guided camel ride onto the dunes is included with local handlers. For guests who prefer not to ride, walking onto the dunes or vehicle transfer is also arranged.',
+      },
+      {
+        question: 'Is dinner included?',
+        answer: 'Yes. A freshly prepared traditional Rajasthani buffet dinner is included following the cultural program.',
+      },
+      {
+        question: 'Is this an overnight desert stay?',
+        answer: 'No, this starting experience is an evening journey returning to Jaisalmer after dinner. If you wish to stay overnight in a luxury Swiss tent, an overnight upgrade is readily available upon request.',
+      },
+      {
+        question: 'Can I add a jeep safari?',
+        answer: 'Yes. Optional 4x4 jeep dune excursions can be added to your booking on request.',
+      },
+      {
+        question: 'Can the experience be customized?',
+        answer: 'Yes. Pacing, dietary preferences, private seating, and special timing can all be customized.',
+      },
+      {
+        question: 'Is the campfire guaranteed?',
+        answer: 'The campfire and evening fire program is subject to weather, wind conditions, safety, and local operating regulations.',
       },
     ],
     relatedPackages: ['3-days-2-nights', '2-days-1-night', '4-days-3-nights'],
-    seoTitle: 'Thar Desert Safari & Camp Experience Jaisalmer | FolkMiles',
-    seoDescription: 'Experience the Thar Desert with FolkMiles. Sunset camel treks on quieter dunes, verified luxury camps, authentic folk music, and starry nights.',
+    seoTitle: 'Thar Desert Sunset & Cultural Experience, Jaisalmer | FolkMiles',
+    seoDescription: 'Experience the Thar near Jaisalmer with camel ride, sunset, Rajasthani cultural program, dinner and return transfers. From ₹2,100/person.',
   },
   {
     id: 'exp-fort-heritage',

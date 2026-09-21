@@ -72,7 +72,7 @@ export const indiaThemes = [
 
 export const jaisalmerExperiences = [
   { title: 'Fort & Heritage', copy: 'Living lanes, carved havelis and old-city stories.', href: '/experiences/jaisalmer-fort-heritage', image: '/images/jaisalmer/nathmal-haveli.jpg' },
-  { title: 'Thar Desert Safari', copy: 'Dunes, camel or jeep journeys, authentic camps and stars.', href: '/experiences/jaisalmer-desert-safari', image: '/images/jaisalmer/camp-twilight.jpg' },
+  { title: 'Thar Sunset & Cultural Experience', copy: 'Camel ride, Thar sunset, Rajasthani culture, campfire and dinner.', href: '/experiences/jaisalmer-desert-safari', image: '/images/jaisalmer/camp-twilight.jpg' },
   { title: 'Private Itineraries', copy: 'Flexible two, three and four-day starting points.', href: '/destinations/jaisalmer', image: '/images/jaisalmer/living-lanes.jpg' },
   { title: 'Local Planning & Transfers', copy: 'Transport, stays and experiences shaped around your pace.', href: '/contact', image: '/images/jaisalmer/amar-sagar.jpg' },
 ];

@@ -131,12 +131,31 @@ export default function JaisalmerPackagesPage() {
         </div>
       </section>
 
+      {/* Global Price Disclaimer */}
+      <section className="wrap" style={{ marginBottom: '24px' }}>
+        <div
+          style={{
+            background: '#faf7f2',
+            border: '1px solid var(--border, #e5e0d8)',
+            borderRadius: '12px',
+            padding: '16px 20px',
+            fontSize: '0.88rem',
+            color: '#4a5750',
+            lineHeight: 1.5,
+          }}
+        >
+          <strong>Transparent Pricing Note: </strong>
+          Starting prices are per person. Final trip cost may vary depending on travel dates, number of travellers, accommodation category, transport requirements and selected experiences.
+        </div>
+      </section>
+
       {/* Package Cards List */}
       <section className="wrap section" style={{ paddingTop: '0' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
           {filteredPackages.map((pkg) => {
+            const priceText = pkg.price ? `starting from ₹${pkg.price.toLocaleString('en-IN')}/person` : '';
             const encodedWaMessage = encodeURIComponent(
-              `Hi FolkMiles,\nI'm interested in the ${pkg.title} (${pkg.shortTitle}).\n\nTravel dates:\nNumber of travellers:\nCould you help me with a custom quote?`
+              `Hi FolkMiles,\n\nI’m interested in the ${pkg.duration} Jaisalmer Journey ${priceText}.\n\nTravel date:\nNumber of travellers:\n\nCould you help me customize the trip?`
             );
             const waUrl = `https://wa.me/${folkMilesContact.whatsapp}?text=${encodedWaMessage}`;
 
@@ -281,13 +300,13 @@ export default function JaisalmerPackagesPage() {
                   >
                     <div>
                       <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#66726b', display: 'block' }}>
-                        Pricing
+                        Starting Price
                       </span>
-                      <strong style={{ fontSize: '1.2rem', color: '#1c2621' }}>
-                        {pkg.price === null ? 'Price on Request' : `₹${pkg.price.toLocaleString('en-IN')}`}
+                      <strong style={{ fontSize: '1.25rem', color: '#103f32' }}>
+                        {pkg.price === null ? 'Price on Request' : `From ₹${pkg.price.toLocaleString('en-IN')} / person`}
                       </strong>
-                      <span style={{ display: 'block', fontSize: '0.75rem', color: '#66726b' }}>
-                        Depends on dates, group size & hotel category
+                      <span style={{ display: 'block', fontSize: '0.75rem', color: '#66726b', marginTop: '2px' }}>
+                        Starting prices are per person. Final quote depends on dates & stay tier.
                       </span>
                     </div>
 
