@@ -95,9 +95,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
         </div>
         <h1>{exp.title}</h1>
         <p style={{ maxWidth: '780px', fontSize: '1.15rem', color: '#4a5750', lineHeight: 1.6 }}>
-          {isTharExperience
-            ? 'A complete evening in the Thar with camel ride, sunset, Rajasthani culture, campfire and dinner — with transfers from Jaisalmer.'
-            : exp.shortDescription}
+          {exp.shortDescription}
         </p>
 
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '24px', alignItems: 'center' }}>
@@ -221,8 +219,8 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
           {/* 5. EXPERIENCE TIMELINE */}
           {exp.timeline && (
             <section style={{ margin: '36px 0' }}>
-              <Eyebrow>The evening flow</Eyebrow>
-              <h2 style={{ marginTop: '4px', marginBottom: '20px' }}>Experience Timeline</h2>
+              <Eyebrow>Flexible sequence</Eyebrow>
+              <h2 style={{ marginTop: '4px', marginBottom: '20px' }}>Experience Flow</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {exp.timeline.map((step) => (
                   <div
@@ -312,7 +310,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
                     }}
                   >
                     <h3 style={{ fontSize: '1.1rem', color: '#9c4826', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <XIcon size={20} /> Not Included / Optional Add-ons
+                      <XIcon size={20} /> Not Included
                     </h3>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
                       {exp.exclusions.map((item) => (
@@ -616,7 +614,7 @@ export default async function ExperiencePage({ params }: { params: Promise<{ exp
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Sparkles size={16} style={{ color: '#9c4826' }} />
-                <span>Customizable Timings & Stops</span>
+                <span>Flexible Sequence & Arrangements</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <HelpCircle size={16} style={{ color: '#1f5b45' }} />

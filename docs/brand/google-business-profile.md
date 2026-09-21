@@ -61,7 +61,7 @@ Our offerings include 2 to 4-day private Jaisalmer tours, serene Thar desert saf
 | **2D1N Living Jaisalmer Tour** | Tour Operator | `https://folkmiles.com/destinations/jaisalmer/2-days-1-night` | ₹5,500 / person | Jaisalmer Fort, Havelis, Gadisar Lake, 1 night in Thar desert camp, camel safari, cultural folk dance |
 | **3D2N Complete Jaisalmer Experience** | Tour Operator | `https://folkmiles.com/destinations/jaisalmer/3-days-2-nights` | ₹9,500 / person | Fort walk, Patwon Haveli, Kuldhara ghost village, Lodurva Jain temples, Sam dunes sunset, private AC cab |
 | **4D3N Deep Desert & Border Odyssey** | Tour Operator | `https://folkmiles.com/destinations/jaisalmer/4-days-3-nights` | ₹14,500 / person | Comprehensive heritage, desert star-gazing, Tanot Mata temple, Longewala War Memorial border post, artisan communities |
-| **Thar Desert Sunset & Cultural Experience** | Activity / Experience | `https://folkmiles.com/experiences/jaisalmer-desert-safari` | ₹2,100 / person | Jaisalmer pickup & drop, camel ride on Thar dunes, sunset viewing, Rajasthani cultural folk program, campfire (seasonal), authentic dinner |
+| **Thar Desert Sunset & Cultural Experience** | Activity / Experience | `https://folkmiles.com/experiences/jaisalmer-desert-safari` | ₹2,100 / person | Jaisalmer pickup, desert transfer from Jaisalmer, camel ride, sunset experience, Rajasthani cultural program, campfire / evening fire program (subject to weather/safety), dinner included, return transfer to Jaisalmer |
 | **Living Fort & Haveli Heritage Walk** | Sightseeing Tour | `https://folkmiles.com/experiences/jaisalmer-fort-heritage` | Custom Quote | Resident local storyteller, 12th-century living fort, Salim Singh & Patwon ki Haveli architecture, hidden alleys |
 | **Desert Walking & Stargazing** | Nature Tour | `https://folkmiles.com/experiences/desert-walking-jaisalmer` | Custom Quote | Silent dune walking, flora/fauna orientation, desert flora, zero light-pollution astronomy |
 
@@ -109,4 +109,4 @@ Our offerings include 2 to 4-day private Jaisalmer tours, serene Thar desert saf
 - **Q&A Seed**: Answer top 5 common traveller questions directly in GBP Q&A section:
   1. *How far is the desert camp from Jaisalmer railway station?* (Approx. 42 km; FolkMiles includes private door-to-door station transfers in all packages).
   2. *Are family tents with attached washrooms available?* (Yes, all FolkMiles partner camps provide Swiss cottage tents with private running hot/cold water).
-  3. *What is included in the desert safari?* (Camel ride, sunset viewing, evening tea/snacks, Kalbelia dance, and buffet dinner).
+  3. *What is included in the Thar Desert Sunset & Cultural Experience?* (Jaisalmer pickup, desert transfer from Jaisalmer, camel ride, sunset experience, Rajasthani cultural program, campfire / evening fire program subject to weather/safety, dinner included, and return transfer to Jaisalmer).
